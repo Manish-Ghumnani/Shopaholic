@@ -11,10 +11,10 @@
 </h:head>
 <h:body>
 	<h:form id="form">
-    <p:dataGrid var="product" value="#{productBean.productList}" columns="3" layout="grid"
+        <p:dataGrid var="product" value="#{productBean.productList}" columns="3" 
         rows="6" paginator="true" id="products"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12">
+        rowsPerPageTemplate="1,123">
  
         <f:facet name="header">
             Select Products
@@ -66,7 +66,7 @@
                 <h:outputText value="#{productBean.selectedProd.productId}" />
  
                 <h:outputText value="origin" />
-                <h:outputText value="#{productBean.selectedProd.origin}" />
+                <h:outputText value="#{productBean.selectedProd.quantity}" />
                 
             </p:panelGrid>
         </p:outputPanel>

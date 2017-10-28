@@ -8,9 +8,12 @@ package sg.edu.nus.iss.codepirates.shoppingcart.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
 import javax.faces.event.ValueChangeEvent;
+import javax.inject.Named;
 import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
 /**
@@ -19,7 +22,7 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
  * Managed Bean for Cart
  */
 
-@ManagedBean(name = "cartBean")
+@Named
 @SessionScoped
 public class CartBean implements Serializable {
 

@@ -39,6 +39,7 @@ public class Product implements Serializable{
     
     @Column(name = "available")
     private int available;
+    
 
     public byte[] getProductImage() {
         return productImage;
