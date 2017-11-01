@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Shopping Cart</title>
-</h:head>
-<h:body>
-	<h:form id="form">
-        <p:dataGrid var="product" value="#{productBean.productList}" columns="3" 
-        rows="6" paginator="true" id="products"
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="1,123">
- 
-        <f:facet name="header">
-            Select Products
-        </f:facet>
- 
-        <p:panel header="#{product.productId}" style="text-align:center">
-            <h:panelGrid columns="1" style="width:100%">
-                
-                <p:graphicImage value="#{productBean.productImage}">
-		<f:param name="pid" value="#{product.productId}" />
-		</p:graphicImage>
- 
-                <h:outputText value="#{product.productName}" />
-                <br></br>
-                Available: <h:outputText value="#{product.available}" />
-                <br></br>
-                 <h:outputLabel for="quantity" value="Select Quantity: " />
-                 <p:spinner id="quantity" value="#{product.quantity}" 
-                            valueChangeListener="#{cartBean.cartQuantity}"
-                            min="0" size="2"/>                 
-               
-                 <br></br>
-                <p:commandLink update=":form:prodDetail" oncomplete="PF('prodDialog').show()" title="View Detail">
-                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-                    <f:setPropertyActionListener value="#{product}" target="#{productBean.selectedProd}" />
-                </p:commandLink>
-  
-                    <h:commandLink value="Add to Cart" 
-					 action="#{cartBean.addToCart(product)}"/>    
-            </h:panelGrid>
-        </p:panel> 
-    </p:dataGrid>
-            
-            <br></br>
-             <div align="right">
-             <p:commandButton value="Checkout"
-					 action="#{cartBean.checkout()}"/>  
-             </div>
-            
-            <p:dialog header="Product Info" widgetVar="prodDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-        <p:outputPanel id="prodDetail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty productBean.selectedProd}" columnClasses="label,value">
-                <f:facet name="header">
-                     <p:graphicImage value="#{productBean.productImage}">
-                     </p:graphicImage>
-                </f:facet>
- 
-                <h:outputText value="Id:" />
-                <h:outputText value="#{productBean.selectedProd.productId}" />
- 
-                <h:outputText value="origin" />
-                <h:outputText value="#{productBean.selectedProd.quantity}" />
-                
-            </p:panelGrid>
-        </p:outputPanel>
-    </p:dialog>
-</h:form>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Shopping Cart</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:dataGrid var="product" value="#{productBean.productList}" columns="3" 
+                        rows="6" paginator="true" id="products"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12,16">
 
-</h:body>
+                <f:facet name="header">
+                    Select Products
+                </f:facet>
+
+                <p:panel header="#{product.productId}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+
+                        <p:graphicImage value="#{productBean.productImage}">
+                            <f:param name="pid" value="#{product.productId}" />
+                        </p:graphicImage>
+
+                        <h:outputText value="#{product.productName}" />
+                        <br></br>
+                        Available: <h:outputText value="#{product.available}" />
+                        <br></br>
+                        <h:outputLabel for="quantity" value="Select Quantity: " />
+                        <p:spinner id="quantity" value="#{product.quantity}" 
+                                   valueChangeListener="#{cartBean.cartQuantity}"
+                                   min="0" size="2"/>                 
+
+                        <br></br>
+                        <p:commandLink update=":form:prodDetail" oncomplete="PF('prodDialog').show()" title="View Detail">
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="#{product}" target="#{productBean.selectedProd}" />
+                        </p:commandLink>
+
+                        <h:commandLink value="Add to Cart" 
+                                       action="#{cartBean.addToCart(product)}"/>    
+                    </h:panelGrid>
+                </p:panel> 
+            </p:dataGrid>
+
+            <br></br>
+            <div align="right">
+                <p:commandButton value="Checkout"
+                                 action="#{cartBean.checkout()}"/>  
+            </div>
+
+            <p:dialog header="Product Info" widgetVar="prodDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="prodDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty productBean.selectedProd}" columnClasses="label,value">
+                        <f:facet name="header">
+                            <p:graphicImage value="#{productBean.productImage}">
+                            </p:graphicImage>
+                        </f:facet>
+
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{productBean.selectedProd.productId}" />
+
+                        <h:outputText value="origin" />
+                        <h:outputText value="#{productBean.selectedProd.quantity}" />
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+
+    </h:body>
 </html>

@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"	
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Checkout</title>
-</h:head>
-<h:body>
-    <div align="center">
-        <h1>Checkout Products</h1></div>
-	<h:form id="checkoutForm">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Checkout</title>
+    </h:head>
+    <h:body>
+        <div align="center">
+            <h1>Checkout Products</h1></div>
+        <h:form id="checkoutForm">
 
-		<p:outputPanel id="checkout">
+            <p:outputPanel id="checkout">
 
-			<p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
-				editable="false" widgetVar="documentTable">
+                <p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
+                             editable="false" widgetVar="documentTable">
 
-				<p:column headerText="Product Id" style="width:10%">
-					<h:outputText value="#{product.productId}" title="Id" />
-				</p:column>
+                    <p:column headerText="Product Id" style="width:10%">
+                        <h:outputText value="#{product.productId}" title="Id" />
+                    </p:column>
 
-				<p:column headerText="Name" style="width:10%">
-					<h:outputText value="#{product.productName}" title="Name" />
-				</p:column>
+                    <p:column headerText="Name" style="width:10%">
+                        <h:outputText value="#{product.productName}" title="Name" />
+                    </p:column>
 
-				<p:column headerText="Image" style="width:10%">
-					<p:graphicImage value="#{productBean.productImage}">
-						<f:param name="pid" value="#{product.productId}" />
-					</p:graphicImage>
-				</p:column>
-                            
-                            <p:column headerText="Quantity" style="width:10%">
-                                <p:outputLabel id="quantity" value="#{product.quantity}" />   
-				</p:column>
-			</p:dataTable>
-		</p:outputPanel>
+                    <p:column headerText="Image" style="width:10%">
+                        <p:graphicImage value="#{productBean.productImage}">
+                            <f:param name="pid" value="#{product.productId}" />
+                        </p:graphicImage>
+                    </p:column>
+
+                    <p:column headerText="Quantity" style="width:10%">
+                        <p:outputLabel id="quantity" value="#{product.quantity}" />   
+                    </p:column>
+                </p:dataTable>
+            </p:outputPanel>
             <div class="ui-fluid">
                 <h2>Enter your details here...</h2><br></br>
                 <p></p> 
-            
-            <p:outputLabel for="name" value="Name:" />
-            <p:inputText id="name" value="#{customerBean.customerDetails.name}" placeholder="Name"/>
-            <p></p>
-            <p:outputLabel for="comment" value="Comment: " />
-            <p:inputText id="comment" value="#{customerBean.customerDetails.comment}" placeholder="Comments" />
-            <p></p>
-            <p:outputLabel for="address" value="Address: "/>
-            <p:inputTextarea id="address" value="#{customerBean.customerDetails.address}" placeholder="Enter Address..."/>
-            <p></p>
-            <p></p>
-            <p:commandButton value="Submit" action="#{customerBean.sendJMSMessageToWarehouseQueue()}"></p:commandButton>
-            </div>
-	</h:form>
 
-</h:body>
+                <p:outputLabel for="name" value="Name:" />
+                <p:inputText id="name" value="#{customerBean.customerDetails.name}" placeholder="Name"/>
+                <p></p>
+                <p:outputLabel for="comment" value="Comment: " />
+                <p:inputText id="comment" value="#{customerBean.customerDetails.comment}" placeholder="Comments" />
+                <p></p>
+                <p:outputLabel for="address" value="Address: "/>
+                <p:inputTextarea id="address" value="#{customerBean.customerDetails.address}" placeholder="Enter Address..."/>
+                <p></p>
+                <p></p>
+                <p:commandButton value="Submit" action="#{customerBean.sendJMSMessageToWarehouseQueue()}"></p:commandButton>
+            </div>
+        </h:form>
+
+    </h:body>
 </html>

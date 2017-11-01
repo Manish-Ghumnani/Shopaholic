@@ -5,12 +5,20 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.RequestScoped;
 
-import javax.faces.bean.RequestScoped;
+
 import javax.faces.context.FacesContext;
+
+
+
+
+
 import javax.faces.event.PhaseId;
+import javax.inject.Named;
+
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -23,7 +31,7 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
  * Managed Bean for Product
  */
 
-@ManagedBean(name = "productBean")
+@Named
 @RequestScoped
 public class ProductBean implements Serializable {
     
@@ -35,6 +43,13 @@ public class ProductBean implements Serializable {
     private StreamedContent productImage;
     private List<Product> productList;    
 
+    @PostConstruct
+    public void init(){
+        System.out.println("Inside Init()");
+          productList =  prodEjb.getProductDetails();
+    }
+    
+    
     public Product getSelectedProd() {
         return selectedProd;
     }

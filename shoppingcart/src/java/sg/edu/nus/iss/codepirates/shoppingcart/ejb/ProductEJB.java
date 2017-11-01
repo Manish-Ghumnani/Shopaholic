@@ -6,9 +6,9 @@
 package sg.edu.nus.iss.codepirates.shoppingcart.ejb;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import sg.edu.nus.iss.codepirates.shoppingcart.facade.ProductsFacade;
 import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
 /**
@@ -21,16 +21,17 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 @Stateless
 public class ProductEJB {
 
-    @PersistenceContext
-    private EntityManager em;
-
+    @EJB
+    ProductsFacade productFacade;
+    
+    
     public List<Product> getProductDetails() {
-        return em.createQuery("select prod from Product prod")
-                .getResultList();
+             return productFacade.findAll();
     }
 
     public byte[] getProdImage(String pid) {
-        Product prod = em.find(Product.class, pid);
+      
+         Product prod=   productFacade.find(pid);
         return prod.getProductImage();
     }
 }

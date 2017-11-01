@@ -8,9 +8,7 @@ package sg.edu.nus.iss.codepirates.shoppingcart.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
@@ -27,9 +25,11 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 public class CartBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+   
+    
     private int quantity;
     private List<Product> products;
+    
 
     public int getQuantity() {
         return quantity;
@@ -71,6 +71,8 @@ public class CartBean implements Serializable {
             products.add(product);
         }
     }
+    
+    
 
     public void cartQuantity(ValueChangeEvent event) {
         quantity = (Integer) event.getNewValue();
@@ -79,4 +81,6 @@ public class CartBean implements Serializable {
     public String checkout() {
         return ("checkout");
     }
+    
+    
 }

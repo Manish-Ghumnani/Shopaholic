@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -20,6 +21,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "product")
+@NamedQuery(name = "productDetails",query = "Select p from Product p ")
 public class Product implements Serializable{
     
     private static final long serialVersionUID = 1L;

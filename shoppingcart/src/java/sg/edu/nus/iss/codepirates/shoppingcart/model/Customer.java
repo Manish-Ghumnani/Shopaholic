@@ -6,18 +6,15 @@
 package sg.edu.nus.iss.codepirates.shoppingcart.model;
 
 import java.io.Serializable;
-import javax.inject.Inject;
-import sg.edu.nus.iss.codepirates.shoppingcart.bean.CartBean;
 
 /**
  *
  * @author Manish
  */
+
 public class Customer implements Serializable{
     
     private static final long serialVersionUID = 1L;
-    
- 
     
     private String name;
     

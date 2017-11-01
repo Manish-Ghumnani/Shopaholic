@@ -11,7 +11,7 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 /**
- *Message Driven Bean to read Data from MDB and Send it to angular Application
+ *Message Driven Bean to read Data from JMS Queue and Send it to angular Application
  * @author Prasanna
  */
 @MessageDriven(activationConfig = {

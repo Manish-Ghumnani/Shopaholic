@@ -13,8 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ManagedBean;
+
 import javax.inject.Inject;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
@@ -32,7 +31,7 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
  *
  * @author Manish
  */
-@ManagedBean(name = "customerBean")
+@Named
 @SessionScoped
 public class CustomerBean implements Serializable{
 
@@ -40,16 +39,14 @@ public class CustomerBean implements Serializable{
     private Queue warehouseQueue;
 
     @Inject
-    @JMSConnectionFactory("java:comp/DefaultJMSConnectionFactory")
+    @JMSConnectionFactory("jms/connectionFactory")
     private JMSContext context;
     
     @Inject
     private CartBean cartBean;
 
-   // private static final long serialVersionUID = 1L;
     private Customer customerDetails;
-    //private String name;
-
+   
     public Customer getCustomerDetails() {
         return customerDetails;
     }
@@ -57,8 +54,7 @@ public class CustomerBean implements Serializable{
     public void setCustomerDetails(Customer customerDetails) {
         this.customerDetails = customerDetails;
     }
-    
-    
+   
     /**
      * Creates a new instance of CustomerBean
      */
@@ -72,8 +68,7 @@ public class CustomerBean implements Serializable{
 
     public void sendJMSMessageToWarehouseQueue() {
         try {
-            //context.createProducer().send(warehouseQueue);
-            List<Product> productList = cartBean.getProducts();
+           List<Product> productList = cartBean.getProducts();
             JsonArrayBuilder cartBuilder = Json.createArrayBuilder();
             JsonObjectBuilder prodBuilder;
             
