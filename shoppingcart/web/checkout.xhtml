@@ -63,26 +63,30 @@
  
         <h:panelGrid id="grid" columns="4" cellpadding="5">
             <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="name" value="#{checkoutBean.name}" required="true" label="Name"/>
+            &nbsp;&nbsp;&nbsp;<p:inputText id="name" value="#{customerBean.customerDetails.name}" required="true" label="Name"/>
             <p:message for="name" />      
             
         
              <h:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{checkoutBean.address}" required="true" label="Address"/>
+            &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{customerBean.customerDetails.address}" required="true" label="Address"/>
             <p:message for="address" />    
             
              <h:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{checkoutBean.zipCode}" required="true" label="Zip Code"/>
+            &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{customerBean.customerDetails.zipCode}" required="true" label="Zip Code"/>
             <p:message for="zipcode" />  
            
      
             <h:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{checkoutBean.mobile}" required="true" label="Mobile"/>
+            &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.customerDetails.mobile}" required="true" label="Mobile"/>
             <p:message for="mobile" />   
             
             <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{checkoutBean.email}" required="true" label="Email"/>
+            &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.customerDetails.email}" required="true" label="Email"/>
             <p:message for="email" />
+            
+             <h:outputLabel for="comment" value="Comment:" style="font-weight:bold"/>                    
+            &nbsp;&nbsp;&nbsp;<p:inputText id="comment" value="#{customerBean.customerDetails.comment}" required="true" label="Comment"/>
+            <p:message for="comment" />
              </h:panelGrid>
              
         
@@ -94,20 +98,8 @@
 					 action="#{checkoutBean.back}" immediate="true"/>  &nbsp;
              <p:commandButton value="Buy"
 					 action="#{checkoutBean.buy}"/>                 
-             </div>
+             </div>            
             
-            <p:outputLabel for="name" value="Name:" />
-            <p:inputText id="name" value="#{customerBean.customerDetails.name}" placeholder="Name"/>
-            <p></p>
-            <p:outputLabel for="comment" value="Comment: " />
-            <p:inputText id="comment" value="#{customerBean.customerDetails.comment}" placeholder="Comments" />
-            <p></p>
-            <p:outputLabel for="address" value="Address: "/>
-            <p:inputTextarea id="address" value="#{customerBean.customerDetails.address}" placeholder="Enter Address..."/>
-            <p></p>
-            <p></p>
-            <p:commandButton value="Submit" action="#{customerBean.sendJMSMessageToWarehouseQueue()}"></p:commandButton>
-            </div>
 	</h:form>
 
 </h:body>

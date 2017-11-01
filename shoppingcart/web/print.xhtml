@@ -57,21 +57,21 @@
  
         <h:panelGrid id="grid" columns="4" cellpadding="5">
             <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
-            <h:outputText value="#{checkoutBean.name}" title="Order Amount" /> 
+            <h:outputText value="#{customerBean.customerDetails.name}" title="Order Amount" /> 
             
         
              <h:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
-           <h:outputText value="#{checkoutBean.address}" title="Order Amount" /> 
+           <h:outputText value="#{customerBean.customerDetails.address}" title="Order Amount" /> 
             
              <h:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
-            <h:outputText value="#{checkoutBean.zipCode}" title="Order Amount" /> 
+            <h:outputText value="#{customerBean.customerDetails.zipCode}" title="Order Amount" /> 
            
      
             <h:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
-            <h:outputText value="#{checkoutBean.mobile}" title="Order Amount" /> 
+            <h:outputText value="#{customerBean.customerDetails.mobile}" title="Order Amount" /> 
             
             <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
-            <h:outputText value="#{checkoutBean.email}" title="Order Amount" /> 
+            <h:outputText value="#{customerBean.customerDetails.email}" title="Order Amount" /> 
              </h:panelGrid>
              
         

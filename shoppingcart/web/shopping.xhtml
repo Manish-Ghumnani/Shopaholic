@@ -34,10 +34,11 @@
     <p:growl id="growl" showDetail="true" sticky="true" />      
      
     <br></br> 
+        <p:dataGrid var="product" value="#{productBean.productList}" columns="3" layout="grid"
         rows="6" paginator="true" id="products"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12">        
-        
+        rowsPerPageTemplate="6,12">     
+            
         <f:facet name="header">
             Select Products
         </f:facet>

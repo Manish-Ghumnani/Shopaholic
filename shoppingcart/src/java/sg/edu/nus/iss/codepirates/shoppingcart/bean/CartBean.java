@@ -93,6 +93,7 @@ public class CartBean implements Serializable {
             if (!isAdded && !isError) {
                 if(quantity<=product.getAvailable()){ 
                 updateCart(product);
+                products.add(product);
                 result = "Successful";
                 msg = product.getProductName() + " added to cart. Please click Cart button to update or remove.";
                 }

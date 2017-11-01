@@ -6,8 +6,7 @@
 package sg.edu.nus.iss.codepirates.shoppingcart.model;
 
 import java.io.Serializable;
-import javax.inject.Inject;
-import sg.edu.nus.iss.codepirates.shoppingcart.bean.CartBean;
+
 
 /**
  *
@@ -17,14 +16,42 @@ public class Customer implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
- 
-    
     private String name;
     
     private String address;
     
     private String comment;
+    
+    private String email;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(int mobile) {
+        this.mobile = mobile;
+    }
+
+    public int getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
+    }
+    
+    private int mobile;
+    
+    private int zipCode;
+            
     public String getName() {
         return name;
     }

@@ -1,6 +1,6 @@
 **/dist/*
 **/build/*
-**/nbproject/private/*
+**/nbproject/private*
 **/test/*
 /shoppingcart/nbproject/build-impl.xml
 /shoppingcart/nbproject/genfiles.properties

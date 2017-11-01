@@ -30,17 +30,16 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 @Named("checkoutBean")
 @SessionScoped
 public class CheckoutBean implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
     @Inject
     private CartBean cartBean;
     
-    @EJB private ProductEJB prodEjb;
+    @Inject
+    private CustomerBean custBean;
     
-    private String name;
-    private String address;
-    private int zipCode;
-    private int mobile;
-    private String email;
+    @EJB private ProductEJB prodEjb;
    
     public CartBean getCartBean() {
         return cartBean;
@@ -49,53 +48,12 @@ public class CheckoutBean implements Serializable {
     public void setCartBean(CartBean cartBean) {
         this.cartBean = cartBean;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public int getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(int mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
     
      public String back(){
          return "shopping";
     }
     
-    public String buy() throws IOException{
-        String error = "";
+    public String buy() throws IOException{        
         if(null!=cartBean.getProducts() &&
                 cartBean.getProducts().size()>0){
         for(Product prod:cartBean.getProducts()){            
@@ -103,7 +61,9 @@ public class CheckoutBean implements Serializable {
                             prod.getQuantity());
         }
       }
-        prodEjb.update(cartBean.getProducts());        
+        prodEjb.update(cartBean.getProducts());  
+        custBean.sendJMSMessageToWarehouseQueue();
+        
         return "thankyou";              
     }       
     
