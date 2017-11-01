@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-danger btn-lg btn-block" type="button"
+				ng-click="incomingDOCtrl.disconnect()">
+			Disconnect
+		</button>
+	</div>
+</div>
+<div class="row space-above">
+	<div class="col-md-12">
+		<div class="panel panel-warning" ng-repeat="ndo in incomingDOCtrl.doList">
+			<div class="panel-heading">
+				Date: {{ ndo.recvTimestamp }}
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<tr>
+						<td><code>Name:</code></td>
+						<td>{{ ndo.name }}</td>
+					</tr>
+					<tr>
+						<td><code>Address:</code></td>
+						<td>{{ ndo.address }}</td>
+					</tr>
+					<tr>
+						<td><code>Comments:</code></td>
+						<td>{{ ndo.comment }}</td>
+					</tr>
+				</table>
+
+				<ul class="list-group">
+					<li class="list-group-item active">
+						<strong>Cart</strong>
+					</li>
+					<li class="list-group-item" ng-repeat="i in ndo.cart">
+						<span class="badge">{{ i.quantity }}</span>
+						{{ i.item }}
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -95,7 +95,19 @@
              <p:commandButton value="Buy"
 					 action="#{checkoutBean.buy}"/>                 
              </div>
-
+            
+            <p:outputLabel for="name" value="Name:" />
+            <p:inputText id="name" value="#{customerBean.customerDetails.name}" placeholder="Name"/>
+            <p></p>
+            <p:outputLabel for="comment" value="Comment: " />
+            <p:inputText id="comment" value="#{customerBean.customerDetails.comment}" placeholder="Comments" />
+            <p></p>
+            <p:outputLabel for="address" value="Address: "/>
+            <p:inputTextarea id="address" value="#{customerBean.customerDetails.address}" placeholder="Enter Address..."/>
+            <p></p>
+            <p></p>
+            <p:commandButton value="Submit" action="#{customerBean.sendJMSMessageToWarehouseQueue()}"></p:commandButton>
+            </div>
 	</h:form>
 
 </h:body>
