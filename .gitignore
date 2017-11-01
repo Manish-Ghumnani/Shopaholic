@@ -1,9 +1,4 @@
 **/dist/*
 **/build/*
-**/nbproject/private/*
+**/nbproject/private*
 **/test/*
-/shoppingcart/nbproject/build-impl.xml
-/shoppingcart/nbproject/genfiles.properties
-/shoppingcart/nbproject/project.properties
-/shoppingcart/nbproject/project.xml
-/shoppingcart/src/conf/persistence.xml

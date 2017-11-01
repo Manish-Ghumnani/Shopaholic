@@ -12,9 +12,8 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
 import javax.jms.JMSException;
@@ -31,9 +30,11 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
  *
  * @author Manish
  */
-@Named
+@Named("customerBean")
 @SessionScoped
 public class CustomerBean implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 
     @Resource(mappedName = "jms/warehouseQueue")
     private Queue warehouseQueue;

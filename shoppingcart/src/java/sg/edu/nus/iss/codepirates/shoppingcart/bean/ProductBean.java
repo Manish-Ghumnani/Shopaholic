@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 
-
 import javax.faces.context.FacesContext;
 
 
@@ -31,15 +30,14 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
  * Managed Bean for Product
  */
 
-@Named
+@Named("productBean")
 @RequestScoped
 public class ProductBean implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @EJB private ProductEJB prodEjb;
-
-    private Product selectedProd;
+    
     private StreamedContent productImage;
     private List<Product> productList;    
 
@@ -50,25 +48,15 @@ public class ProductBean implements Serializable {
     }
     
     
-    public Product getSelectedProd() {
-        return selectedProd;
-    }
-
-    public void setSelectedProd(Product selectedProd) {
-        this.selectedProd = selectedProd;
-    }
-
     public void setProductImage(StreamedContent productImage) {
         this.productImage = productImage;
     }
 
-    public void setProductList(List<Product> productList) {
-        System.out.println("Set Prod List");
+    public void setProductList(List<Product> productList) {        
         this.productList = productList;
     }
 
-    public List<Product> getProductList() throws IOException, SQLException {
-        System.out.println("Get Prod List");
+    public List<Product> getProductList() throws IOException, SQLException {        
         return prodEjb.getProductDetails();
     }
 
@@ -88,6 +76,18 @@ public class ProductBean implements Serializable {
             return new DefaultStreamedContent(new ByteArrayInputStream(image));
 
         }
-    }    
+    }   
+    
+    public String home(){        
+        return "welcome";
+    }
+    
+    public String shopping(){        
+        return "shopping";
+    }
+    
+    public String checkout(){        
+        return "checkout";
+    }
 
 }
