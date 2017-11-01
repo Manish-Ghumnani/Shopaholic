@@ -39,7 +39,29 @@ public class Product implements Serializable{
     
     @Column(name = "available")
     private int available;
+    
+    @Column(name = "price")
+    private float price;
+    
+    @Transient
+    private float totalPrice;
 
+    public float getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }    
+    
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+    
     public byte[] getProductImage() {
         return productImage;
     }

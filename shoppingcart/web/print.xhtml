@@ -7,22 +7,16 @@
         xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Checkout</title>
+	<title>Order Summary</title>
 </h:head>
 <h:body>
-    <h:form id="checkoutForm">    
-    <p:tabMenu activeIndex="2">
-    <p:menuitem value="Home" action="#{productBean.home}" immediate="true">
-        <f:param name="i" value="0" />
-           </p:menuitem> 
-         <p:menuitem value="Shopping" action="#{productBean.shopping}" immediate="true">
-        <f:param name="i" value="1" />
-           </p:menuitem>                   
-    </p:tabMenu>
+    <h:form id="checkoutForm">       
     
     <div align="center">
-        <h1>Checkout Products</h1></div>
-	    
+        <h1>Order Summary</h1></div>
+        
+        <h3>Thank you for shopping with us.</h3>
+        
 		<p:outputPanel id="checkout">
 
 			<p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
@@ -63,39 +57,26 @@
  
         <h:panelGrid id="grid" columns="4" cellpadding="5">
             <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="name" value="#{checkoutBean.name}" required="true" label="Name"/>
-            <p:message for="name" />      
+            <h:outputText value="#{checkoutBean.name}" title="Order Amount" /> 
             
         
              <h:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{checkoutBean.address}" required="true" label="Address"/>
-            <p:message for="address" />    
+           <h:outputText value="#{checkoutBean.address}" title="Order Amount" /> 
             
              <h:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{checkoutBean.zipCode}" required="true" label="Zip Code"/>
-            <p:message for="zipcode" />  
+            <h:outputText value="#{checkoutBean.zipCode}" title="Order Amount" /> 
            
      
             <h:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{checkoutBean.mobile}" required="true" label="Mobile"/>
-            <p:message for="mobile" />   
+            <h:outputText value="#{checkoutBean.mobile}" title="Order Amount" /> 
             
             <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{checkoutBean.email}" required="true" label="Email"/>
-            <p:message for="email" />
+            <h:outputText value="#{checkoutBean.email}" title="Order Amount" /> 
              </h:panelGrid>
              
         
-         </p:panel>
         
-        <br></br>
-        <div align="right">
-             <p:commandButton value="Back"
-					 action="#{checkoutBean.back}" immediate="true"/>  &nbsp;
-             <p:commandButton value="Buy"
-					 action="#{checkoutBean.buy}"/>                 
-             </div>
-
+         </p:panel>
 	</h:form>
 
 </h:body>

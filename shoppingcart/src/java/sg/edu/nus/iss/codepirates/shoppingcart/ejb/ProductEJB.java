@@ -33,4 +33,11 @@ public class ProductEJB {
         Product prod = em.find(Product.class, pid);
         return prod.getProductImage();
     }
+    
+    public void update(List<Product> products){
+        for(Product prod:products){            
+            em.createQuery("update Product set available="+prod.getAvailable()+""
+                    + " where productId='"+prod.getProductId()+"'").executeUpdate();
+        }
+    }
 }
