@@ -7,22 +7,20 @@ package sg.edu.nus.iss.codepirates.shoppingcart.model;
 
 import java.io.Serializable;
 
-
 /**
  *
- * @author Manish
+ * @author Manish Model for Customer
  */
+public class Customer implements Serializable {
 
-public class Customer implements Serializable{
-    
     private static final long serialVersionUID = 1L;
-    
+
     private String name;
-    
+
     private String address;
-    
+
     private String comment;
-    
+
     private String email;
 
     public String getEmail() {
@@ -48,11 +46,11 @@ public class Customer implements Serializable{
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
-    
+
     private int mobile;
-    
+
     private int zipCode;
-            
+
     public String getName() {
         return name;
     }

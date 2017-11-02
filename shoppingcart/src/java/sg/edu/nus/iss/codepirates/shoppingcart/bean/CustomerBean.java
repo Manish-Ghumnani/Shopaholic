@@ -29,26 +29,19 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 /**
  *
  * @author Manish
+ * Bean for Customer
  */
+
 @Named("customerBean")
 @SessionScoped
 public class CustomerBean implements Serializable{
     
     private static final long serialVersionUID = 1L;
-
-    @Resource(mappedName = "jms/warehouseQueue")
-    private Queue warehouseQueue;
-
-    @Inject
-    @JMSConnectionFactory("java:comp/DefaultJMSConnectionFactory")
-    private JMSContext context;
     
     @Inject
     private CartBean cartBean;
 
-   // private static final long serialVersionUID = 1L;
-    private Customer customerDetails;
-    //private String name;
+    private Customer customerDetails;    
 
     public Customer getCustomerDetails() {
         return customerDetails;
@@ -70,39 +63,4 @@ public class CustomerBean implements Serializable{
         customerDetails = new Customer();
     }
 
-    public void sendJMSMessageToWarehouseQueue() {
-        try {
-            //context.createProducer().send(warehouseQueue);
-            List<Product> productList = cartBean.getProducts();
-            JsonArrayBuilder cartBuilder = Json.createArrayBuilder();
-            JsonObjectBuilder prodBuilder;
-            
-            if(!productList.isEmpty()){
-                
-                for(Product product :productList){
-                    prodBuilder  = Json.createObjectBuilder();
-                    prodBuilder.add("item", product.getProductName())
-                            .add("quantity", product.getQuantity());
-                    cartBuilder.add(prodBuilder);
-                    
-                }
-                
-            }
-            
-            
-            JsonObject customer = Json.createObjectBuilder().add("name", customerDetails.getName())
-                    .add("address",customerDetails.getAddress()).add("comment",customerDetails.getComment())
-                    .add("cart", cartBuilder)
-                    .build();
-            
-            TextMessage textMessage = context.createTextMessage();
-            textMessage.setText(customer.toString());
-            context.createProducer().send(warehouseQueue,textMessage);
-            
-            System.out.println(customer);
-        } catch (JMSException ex) {
-            Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
 }

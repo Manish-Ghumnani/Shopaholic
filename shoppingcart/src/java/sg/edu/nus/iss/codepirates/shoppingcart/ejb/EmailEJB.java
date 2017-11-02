@@ -46,10 +46,10 @@ public class EmailEJB {
 
             email.append("<tr style='border:1px solid black'><th style='border:1px solid black'>Product ID</th><th style='border:1px solid black'>Product Name</th><th style='border:1px solid black'>Quantity</th><th style='border:1px solid black'>Total Price</th>");
 
-            for (Product prod : products) {
+            products.stream().forEach((prod) -> {
                 append(email, prod.getProductId(), prod.getProductName(),
                         String.valueOf(prod.getQuantity()), "$ " + String.valueOf(prod.getTotalPrice()));
-            }
+            });
 
             email.append("</table>");
             email.append("<br></br>");
