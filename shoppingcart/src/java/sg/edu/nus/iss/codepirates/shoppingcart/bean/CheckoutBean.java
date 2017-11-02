@@ -18,6 +18,7 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import sg.edu.nus.iss.codepirates.shoppingcart.ejb.EmailEJB;
 import sg.edu.nus.iss.codepirates.shoppingcart.ejb.ProductEJB;
 import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
@@ -40,20 +41,14 @@ public class CheckoutBean implements Serializable {
     private CustomerBean custBean;
     
     @EJB private ProductEJB prodEjb;
-   
-    public CartBean getCartBean() {
-        return cartBean;
-    }
-
-    public void setCartBean(CartBean cartBean) {
-        this.cartBean = cartBean;
-    }
+    
+    @EJB private EmailEJB emailEJB;    
     
      public String back(){
          return "shopping";
     }
     
-    public String buy() throws IOException{        
+    public String buy() throws IOException{          
         if(null!=cartBean.getProducts() &&
                 cartBean.getProducts().size()>0){
         for(Product prod:cartBean.getProducts()){            
@@ -62,8 +57,9 @@ public class CheckoutBean implements Serializable {
         }
       }
         prodEjb.update(cartBean.getProducts());  
-        custBean.sendJMSMessageToWarehouseQueue();
-        
+        emailEJB.send(custBean.getCustomerDetails().
+                getEmail(), cartBean.getProducts(), String.valueOf(cartBean.getCartTotal()));
+                
         return "thankyou";              
     }       
     
@@ -75,8 +71,7 @@ public class CheckoutBean implements Serializable {
     String appname = externalContext.getRequestContextPath();
     String protocol = externalContext.getRequestScheme();
     HttpSession session = (HttpSession) externalContext.getSession(true);
-    String url = protocol + "://" + servername + ":" + port + appname + "/print.xhtml;jsessionid="+session.getId()+"?pdf=true";
-    System.out.println("url: "+url);
+    String url = protocol + "://" + servername + ":" + port + appname + "/print.xhtml;jsessionid="+session.getId()+"?pdf=true";    
         
     try {
         ITextRenderer renderer = new ITextRenderer();

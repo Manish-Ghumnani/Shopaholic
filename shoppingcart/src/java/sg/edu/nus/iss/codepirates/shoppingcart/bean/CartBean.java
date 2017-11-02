@@ -32,10 +32,11 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 public class CartBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+//class formbean
     private int quantity;
     private List<Product> products;
     private BigDecimal cartTotal;
+    
 
     public BigDecimal getCartTotal() {
         return cartTotal;
@@ -60,6 +61,9 @@ public class CartBean implements Serializable {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+    
+    //@postconstruct
+    //init
 
     public void addToCart(Product product) {
         boolean isAdded = false;
