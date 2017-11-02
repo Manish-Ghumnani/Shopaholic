@@ -31,25 +31,25 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    public int getMobile() {
+    public Integer getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(Integer mobile) {
         this.mobile = mobile;
     }
 
-    public int getZipCode() {
+    public Integer getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
 
-    private int mobile;
+    private Integer mobile;
 
-    private int zipCode;
+    private Integer zipCode;
 
     public String getName() {
         return name;

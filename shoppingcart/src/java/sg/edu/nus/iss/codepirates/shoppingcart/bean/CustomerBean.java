@@ -6,25 +6,11 @@
 package sg.edu.nus.iss.codepirates.shoppingcart.bean;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.jms.JMSConnectionFactory;
-import javax.jms.JMSContext;
-import javax.jms.JMSException;
-import javax.jms.Queue;
-import javax.jms.TextMessage;
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 import sg.edu.nus.iss.codepirates.shoppingcart.model.Customer;
-import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
 /**
  *
@@ -50,8 +36,7 @@ public class CustomerBean implements Serializable{
     public void setCustomerDetails(Customer customerDetails) {
         this.customerDetails = customerDetails;
     }
-    
-    
+       
     /**
      * Creates a new instance of CustomerBean
      */

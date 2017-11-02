@@ -22,11 +22,6 @@
     </h:head>
 
     <h:body>
-
-
-
-
-
         <h:form>         
 
             <div align="center">
@@ -50,23 +45,18 @@
 
             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
-             <p:dialog header="Register" widgetVar="dlgReg" resizable="false">
+<!--             <p:dialog header="Register" widgetVar="dlgReg" resizable="false">
 
                 <h:panelGrid columns="2" cellpadding="5">
 
                     <h:outputLabel for="name" value="Username:" />
 
-                    <p:inputText id="name" value="#{userLoginView.username}" required="true" label="username" />
+                    <p:inputText id="name" value="#{userLoginBean.username}" required="true" label="username" />
 
                     <h:outputLabel for="new_password" value="Password:" />
 
-                    <p:password id="new_password" value="#{userLoginView.password}" required="true" label="password" />
-
-                    <h:outputLabel for="email" value="Email" style="font-weight:bold"/>                    
-                    <p:inputText id="regex" value="#{validationView.regexText}" validatorMessage="Value does not match pattern.">
-                    <f:validateRegex pattern="^[a-zA-Z]+$" />
-                    </p:inputText>
-
+                    <p:password id="new_password" value="#{userLoginBean.password}" required="true" label="password" />
+                   
                     <f:facet name="footer">
 
                         <p:commandButton value="Submit" />
@@ -77,10 +67,8 @@
 
                 </h:panelGrid>
 
-            </p:dialog>
-
+            </p:dialog>-->
         
-
             <p:dialog header="Login" widgetVar="dlg" resizable="false">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -97,9 +85,7 @@
 
 
                     <f:facet name="footer">
-                        <p:commandButton value="Login" update="growl" actionListener="#{userLoginBean.login}"
-                        <p:commandButton value="Login" 
-
+                        <p:commandButton value="Login" update="growl" actionListener="#{userLoginBean.login}"                  
                                          oncomplete="handleLoginRequest(xhr, status, args)"/>
 
                     </f:facet>  

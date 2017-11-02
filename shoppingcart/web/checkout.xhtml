@@ -62,29 +62,35 @@
                 <p:messages autoUpdate="true"/>
 
                 <h:panelGrid id="grid" columns="4" cellpadding="5">
-                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
+                    <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
                     &nbsp;&nbsp;&nbsp;<p:inputText id="name" value="#{customerBean.customerDetails.name}" required="true" label="Name"/>
                     <p:message for="name" />      
 
 
-                    <h:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
+                    <p:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
                     &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{customerBean.customerDetails.address}" required="true" label="Address"/>
                     <p:message for="address" />    
 
-                    <h:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
-                    &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{customerBean.customerDetails.zipCode}" required="true" label="Zip Code"/>
+                    <p:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{customerBean.customerDetails.zipCode}" required="true" label="Zip Code">                   
+                    <f:validateLength minimum="6" maximum="6"/>
+                    </p:inputText>
                     <p:message for="zipcode" />  
 
 
-                    <h:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
-                    &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.customerDetails.mobile}" required="true" label="Mobile"/>
+                    <p:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.customerDetails.mobile}" required="true" label="Mobile">                    
+                     <f:validateLength minimum="8" maximum="10"/>
+                     </p:inputText>
                     <p:message for="mobile" />   
 
-                    <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
-                    &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.customerDetails.email}" required="true" label="Email"/>
+                    <p:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.customerDetails.email}" required="true" label="Email" validatorMessage="Email is not valid">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </p:inputText>
                     <p:message for="email" />
 
-                    <h:outputLabel for="comment" value="Comment:" style="font-weight:bold"/>                    
+                    <p:outputLabel for="comment" value="Comment:" style="font-weight:bold"/>                    
                     &nbsp;&nbsp;&nbsp;<p:inputText id="comment" value="#{customerBean.customerDetails.comment}" required="true" label="Comment"/>
                     <p:message for="comment" />
                 </h:panelGrid>
