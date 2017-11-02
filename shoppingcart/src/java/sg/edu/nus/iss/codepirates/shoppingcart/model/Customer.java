@@ -12,6 +12,7 @@ import java.io.Serializable;
  *
  * @author Manish
  */
+
 public class Customer implements Serializable{
     
     private static final long serialVersionUID = 1L;
