@@ -5,4 +5,4 @@ Steps for WareHouse Application:
 Notes:
 1.Incoming Order  --> Socket Endpoint(/order)
 2.Customer Order  --> Message Driven Bean (MDB) Triggers SocketEndpoint on calling onMessage()
-3.Session Handler --> Retrieves the unique session each time.
+3.Session Handler --> Singleton Class that Retrieves unique session each time.
