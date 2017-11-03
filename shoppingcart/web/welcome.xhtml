@@ -15,8 +15,7 @@
     <h:head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-
-        <title>TODO supply a title</title>
+        <title>Code Pirates - Welcome</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -69,17 +68,12 @@
 
                     <h:outputLabel for="name" value="Username:" />
 
-                    <p:inputText id="name" value="#{userLoginView.username}" required="true" label="username" />
+                    <p:inputText id="name" value="#{userLoginBean.username}" required="true" label="username" />
 
                     <h:outputLabel for="new_password" value="Password:" />
 
-                    <p:password id="new_password" value="#{userLoginView.password}" required="true" label="password" />
-
-                    <h:outputLabel for="email" value="Email" style="font-weight:bold"/>                    
-                    <p:inputText id="regex" validatorMessage="Value does not match pattern.">
-                    <f:validateRegex pattern="^[a-zA-Z]+$" />
-                    </p:inputText>
-
+                    <p:password id="new_password" value="#{userLoginBean.password}" required="true" label="password" />
+                   
                     <f:facet name="footer">
 
                         <p:commandButton value="Submit" />
@@ -91,22 +85,19 @@
                 </h:panelGrid>
 
             </p:dialog>-->
-
         
-
         <p:dialog header="Login" widgetVar="dlg" resizable="false">
 
                 <h:panelGrid columns="2" cellpadding="5">
 
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" value="#{userLoginBean.username}" required="true" label="username" />
+                    <p:inputText id="username" value="#{userLoginBean.username}" required="true" label="username" />
                     <h:outputLabel for="password" value="Password:" />
                     <p:password id="password" value="#{userLoginBean.password}" required="true" label="password" />
 
                     <f:facet name="footer">
-
                         <p:commandButton value="Login" update="growl" actionListener="#{userLoginBean.login}"                  
-
                                          oncomplete="handleLoginRequest(xhr, status, args)"/>
                     </f:facet>  
 
@@ -123,7 +114,6 @@
                 if (args.validationFailed || !args.loggedIn) {
 
                     PF('dlg').jq.effect("shake", {times: 5}, 100);
-
                 } else {
 
                     PF('dlg').hide();

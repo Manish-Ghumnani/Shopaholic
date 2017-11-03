@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Shopping Cart</title>
-</h:head>
-<h:body>
-    
-    
-    
-	<h:form id="form">    
-    
-               
-    <p:tabMenu activeIndex="1">
-    <p:menuitem value="Home" action="#{productBean.home}">
-        <f:param name="i" value="0" />
-           </p:menuitem> 
-         <p:menuitem value="Shopping" action="#{productBean.shopping}">
-        <f:param name="i" value="1" />
-           </p:menuitem>                     
-    </p:tabMenu>
-            
-            <br></br>
-        <div align="right">  
-             <p:commandButton value="Cart"
-					 action="#{cartBean.cart()}"/>               
-    </div>
-     
-    <p:growl id="growl" showDetail="true" sticky="true" />      
-     
-    <br></br> 
-        <p:dataGrid var="product" value="#{productBean.productList}" columns="3" layout="grid"
-        rows="6" paginator="true" id="products"
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12">     
-            
-        <f:facet name="header">
-            Select Products
-        </f:facet>
- 
-        <p:panel header="#{product.productId}" style="text-align:center">
-            <h:panelGrid columns="1" style="width:100%">
-                
-                <p:graphicImage value="#{productBean.productImage}">
-		<f:param name="pid" value="#{product.productId}" />
-		</p:graphicImage>
- 
-                <h:outputText value="#{product.productName}" />
-                <br></br>
-                Available: <h:outputText value="#{product.available}" />
-                
-                <br></br>
-                Price/Unit: <h:outputText value="$ #{product.price}" />
-                                
-                <br></br>
-                 <h:outputLabel for="quantity" value="Select Quantity: " />
-                 <p:spinner id="quantity" value="#{product.quantity}" 
-                            valueChangeListener="#{cartBean.cartQuantity}"
-                            min="0" size="2"/>                 
-               
-                 <br></br>               
-  
-                    <h:commandButton value="Add to Cart" 
-					 action="#{cartBean.addToCart(product)}" />    
-            </h:panelGrid>
-        </p:panel> 
-    </p:dataGrid>
-            
-            <br></br>
-             <div align="right">
-             <h:commandButton value="Checkout"
-					 action="#{cartBean.checkout()}"/>  
-             </div>
-                       
-</h:form>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Code Pirates - Shopping</title>
+    </h:head>
+    <h:body>
 
-</h:body>
+
+
+        <h:form id="form">    
+
+
+            <p:tabMenu activeIndex="1">
+                <p:menuitem value="Home" action="#{productBean.home}">
+                    <f:param name="i" value="0" />
+                </p:menuitem> 
+                <p:menuitem value="Shopping" action="#{productBean.shopping}">
+                    <f:param name="i" value="1" />
+                </p:menuitem>                     
+            </p:tabMenu>
+
+            <br></br>
+            <div align="right">  
+                <p:commandButton value="Cart"
+                                 action="#{cartBean.cart()}"/>               
+            </div>
+
+            <p:growl id="growl" showDetail="true" sticky="true" />      
+
+            <br></br> 
+            <p:dataGrid var="product" value="#{productBean.productList}" columns="3" layout="grid"
+                        rows="6" paginator="true" id="products"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12">     
+
+                <f:facet name="header">
+                    Select Products
+                </f:facet>
+
+                <p:panel header="#{product.productId}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+
+                        <p:graphicImage value="#{productBean.productImage}">
+                            <f:param name="pid" value="#{product.productId}" />
+                        </p:graphicImage>
+
+                        <h:outputText value="#{product.productName}" />
+                        <br></br>
+                        Available: <h:outputText value="#{product.available}" />
+
+                        <br></br>
+                        Price/Unit: <h:outputText value="$ #{product.price}" />
+
+                        <br></br>
+                        <h:outputLabel for="quantity" value="Select Quantity: " />
+                        <p:spinner id="quantity" value="#{product.quantity}" 
+                                   valueChangeListener="#{cartBean.cartQuantity}"
+                                   min="0" size="2"/>                 
+
+                        <br></br>               
+
+                        <h:commandButton value="Add to Cart" 
+                                         action="#{cartBean.addToCart(product)}" />    
+                    </h:panelGrid>
+                </p:panel> 
+            </p:dataGrid>
+
+            <br></br>
+            <div align="right">
+                <h:commandButton value="Checkout"
+                                 action="#{cartBean.checkout()}"/>  
+            </div>
+
+        </h:form>
+
+    </h:body>
 </html>

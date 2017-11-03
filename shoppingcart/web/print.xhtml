@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"	
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Order Summary</title>
-</h:head>
-<h:body>
-    <h:form id="checkoutForm">       
-    
-    <div align="center">
-        <h1>Order Summary</h1></div>
-        
-        <h3>Thank you for shopping with us.</h3>
-        
-		<p:outputPanel id="checkout">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Order Summary</title>
+    </h:head>
+    <h:body>
+        <h:form id="checkoutForm">       
 
-			<p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
-				editable="false" widgetVar="documentTable">            
+            <div align="center">
+                <h1>Order Summary</h1></div>
 
-				<p:column headerText="Product Id" style="width:10%">
-					<h:outputText value="#{product.productId}" title="Id" />
-				</p:column>
+            <h3>Thank you for shopping with us.</h3>
 
-				<p:column headerText="Name" style="width:10%">
-					<h:outputText value="#{product.productName}" title="Name" />
-				</p:column>
+            <p:outputPanel id="checkout">
 
-				<p:column headerText="Image" style="width:10%">
-					<p:graphicImage value="#{productBean.productImage}">
-						<f:param name="pid" value="#{product.productId}" />
-					</p:graphicImage>
-				</p:column>
-                            
-                            <p:column headerText="Quantity" style="width:10%">
-                           <h:outputText value="#{product.quantity}" title="Quantity" /> 
-				</p:column>
-                            
-                             <p:column headerText="Total Price" style="width:10%">
-                                <h:outputText value="$ #{product.totalPrice}" title="Total Price" />
-				</p:column>
-			</p:dataTable>
-                    
-                    <br></br>
-                    <h:outputLabel for="Order Amount" value="Order Amount: " style="font-weight:bold"/>
-                    <h:outputText value="$ #{cartBean.cartTotal}" title="Order Amount" />                     
-		</p:outputPanel>
-        
-        
-        <br></br>
-        <p:panel header="Customer Information">
-        <p:messages autoUpdate="true"/>
- 
-        <h:panelGrid id="grid" columns="4" cellpadding="5">
-            <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
-            <h:outputText value="#{customerBean.customerDetails.name}" title="Order Amount" /> 
-            
-        
-             <h:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
-           <h:outputText value="#{customerBean.customerDetails.address}" title="Order Amount" /> 
-            
-             <h:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
-            <h:outputText value="#{customerBean.customerDetails.zipCode}" title="Order Amount" /> 
-           
-     
-            <h:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
-            <h:outputText value="#{customerBean.customerDetails.mobile}" title="Order Amount" /> 
-            
-            <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
-            <h:outputText value="#{customerBean.customerDetails.email}" title="Order Amount" /> 
-             </h:panelGrid>
-             
-        
-        
-         </p:panel>
-	</h:form>
+                <p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
+                             editable="false" widgetVar="documentTable">            
 
-</h:body>
+                    <p:column headerText="Product Id" style="width:10%">
+                        <h:outputText value="#{product.productId}" title="Id" />
+                    </p:column>
+
+                    <p:column headerText="Name" style="width:10%">
+                        <h:outputText value="#{product.productName}" title="Name" />
+                    </p:column>
+
+                    <p:column headerText="Image" style="width:10%">
+                        <p:graphicImage value="#{productBean.productImage}">
+                            <f:param name="pid" value="#{product.productId}" />
+                        </p:graphicImage>
+                    </p:column>
+
+                    <p:column headerText="Quantity" style="width:10%">
+                        <h:outputText value="#{product.quantity}" title="Quantity" /> 
+                    </p:column>
+
+                    <p:column headerText="Total Price" style="width:10%">
+                        <h:outputText value="$ #{product.totalPrice}" title="Total Price" />
+                    </p:column>
+                </p:dataTable>
+
+                <br></br>
+                <h:outputLabel for="Order Amount" value="Order Amount: " style="font-weight:bold"/>
+                <h:outputText value="$ #{cartBean.cartTotal}" title="Order Amount" />                     
+            </p:outputPanel>
+
+
+            <br></br>
+            <p:panel header="Customer Information">
+                <p:messages autoUpdate="true"/>
+
+                <h:panelGrid id="grid" columns="4" cellpadding="5">
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
+                    <h:outputText value="#{customerBean.customerDetails.name}" title="Order Amount" /> 
+
+
+                    <h:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
+                    <h:outputText value="#{customerBean.customerDetails.address}" title="Order Amount" /> 
+
+                    <h:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
+                    <h:outputText value="#{customerBean.customerDetails.zipCode}" title="Order Amount" /> 
+
+
+                    <h:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
+                    <h:outputText value="#{customerBean.customerDetails.mobile}" title="Order Amount" /> 
+
+                    <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
+                    <h:outputText value="#{customerBean.customerDetails.email}" title="Order Amount" /> 
+                </h:panelGrid>
+
+
+
+            </p:panel>
+        </h:form>
+
+    </h:body>
 </html>
