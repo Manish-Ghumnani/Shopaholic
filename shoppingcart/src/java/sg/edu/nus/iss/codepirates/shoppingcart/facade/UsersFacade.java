@@ -40,6 +40,11 @@ public class UsersFacade extends AbstractFacade<Users> {
         }
         return false;
     }
+    
+    public void addUser(Users u){
+        create(u);
+    }
+    
 
     public boolean isUserLoggedIn() {
         return loggedInUser != null;

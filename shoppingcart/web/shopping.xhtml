@@ -11,26 +11,24 @@
     </h:head>
     <h:body>
 
-
-
         <h:form id="form">    
 
-
-            <p:tabMenu activeIndex="1">
+            <p:menubar>
                 <p:menuitem value="Home" action="#{productBean.home}">
                     <f:param name="i" value="0" />
                 </p:menuitem> 
                 <p:menuitem value="Shopping" action="#{productBean.shopping}">
                     <f:param name="i" value="1" />
-                </p:menuitem>                     
-            </p:tabMenu>
+                </p:menuitem>
+                  <f:facet name="options">
+                      <p:commandButton  value="Cart" icon="fa fa-shopping-cart" immediate="true" action="#{cartBean.cart()}" style="float: right" />
+                     <p:commandButton  value="Logout" icon="ui-icon-extlink" immediate="true" action="#{userLoginBean.logout()}" style="float: right" />
+               </f:facet> 
+           
+                
+            </p:menubar>
 
             <br></br>
-            <div align="right">  
-             <p:commandButton value="Cart" action="#{cartBean.cart()}"/>
-             
-              <p:commandButton value="logout" action="#{userLoginView.logout()}" />
-            </div>
 
             <p:growl id="growl" showDetail="true" sticky="true" />      
 

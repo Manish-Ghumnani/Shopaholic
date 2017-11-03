@@ -37,11 +37,10 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession(false);
 
         String reqURI = req.getRequestURI();
-        if (reqURI.indexOf("/faces/welcome.xhtml") >= 0 || (session != null && session.getAttribute("username") != null)
-                || reqURI.contains("/public/") || reqURI.contains("javax.faces.resource")) {
+        if ((reqURI.indexOf("/faces/welcome.xhtml") >= 0 || reqURI.indexOf("/faces/login.xhtml") >= 0 || reqURI.indexOf("/faces/register.xhtml") >= 0)  || (session != null && session.getAttribute("username") != null)) {
             chain.doFilter(request, response);
         } else {
-            resp.sendRedirect(req.getContextPath() + "/faces/welcome.xhtml");
+            resp.sendRedirect(req.getContextPath() + "/faces/login.xhtml");
         }
        
     }

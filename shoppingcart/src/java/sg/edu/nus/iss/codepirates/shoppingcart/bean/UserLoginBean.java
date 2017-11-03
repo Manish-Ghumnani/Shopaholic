@@ -1,12 +1,10 @@
 package sg.edu.nus.iss.codepirates.shoppingcart.bean;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
@@ -14,9 +12,9 @@ import org.primefaces.context.RequestContext;
 import sg.edu.nus.iss.codepirates.shoppingcart.facade.UsersFacade;
 import sg.edu.nus.iss.codepirates.shoppingcart.util.Utility;
 
-@Named("userLoginBean")
-@RequestScoped
-public class UserLoginBean {
+@Named
+@SessionScoped
+public class UserLoginBean implements Serializable {
      
     @EJB
     UsersFacade userFacade;
@@ -52,22 +50,26 @@ public class UserLoginBean {
              HttpSession session= Utility.getSession();
              session.setAttribute("username", username);
             context.addCallbackParam("loggedIn", loggedIn);
-            return ("shopping");
+            return ("welcome");
         } else {
             loggedIn = false;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Invalid credentials"); 
             FacesContext.getCurrentInstance().addMessage(null, message);
             context.addCallbackParam("loggedIn", loggedIn);
-            return("welcome");
+            return("login");
         }
              
     }   
     
     
     public String logout(){
-  
         HttpSession session =   Utility.getSession();
         session.invalidate();
-        return("welcome");
+        return("login");
     }
+    
+    public String register(){
+    return "register";
+    }
+    
 }

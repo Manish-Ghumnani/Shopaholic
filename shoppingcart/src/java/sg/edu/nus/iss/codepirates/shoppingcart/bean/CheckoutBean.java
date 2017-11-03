@@ -66,8 +66,8 @@ public class CheckoutBean implements Serializable {
         queueEJB.sendJMSMessageToWarehouseQueue(cartBean.getProducts(),
                 custBean.getCustomerDetails().getName(), custBean.getCustomerDetails()
                 .getAddress(), custBean.getCustomerDetails().getComment());
-        emailEJB.send(custBean.getCustomerDetails().
-                getEmail(), cartBean.getProducts(), String.valueOf(cartBean.getCartTotal()));
+//        emailEJB.send(custBean.getCustomerDetails().
+//                getEmail(), cartBean.getProducts(), String.valueOf(cartBean.getCartTotal()));
 
         return "thankyou";
     }

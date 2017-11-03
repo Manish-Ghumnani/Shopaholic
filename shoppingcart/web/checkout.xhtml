@@ -11,19 +11,22 @@
     </h:head>
     <h:body>
         <h:form id="checkoutForm">    
-            <p:tabMenu activeIndex="2">
+            <p:menubar>
                 <p:menuitem value="Home" action="#{productBean.home}" immediate="true">
                     <f:param name="i" value="0" />
                 </p:menuitem> 
                 <p:menuitem value="Shopping" action="#{productBean.shopping}" immediate="true">
                     <f:param name="i" value="1" />
-                </p:menuitem>                   
+                </p:menuitem>   
+                 <f:facet name="options">
+                     <p:commandButton  value="Logout" icon="ui-icon-extlink" immediate="true" action="#{userLoginBean.logout()}" style="float: right" />
+                </f:facet>
       
-            </p:tabMenu>
+            </p:menubar>
 
             <div align="center">
                 <h1>Checkout Products</h1></div>
-        <p:commandButton value="logout" action="#{userLoginView.logout()}" immediate="true" style="text-align:right"/>    
+        
             <p:outputPanel id="checkout">
                   
                 <p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
@@ -64,29 +67,29 @@
 
                 <h:panelGrid id="grid" columns="4" cellpadding="5">
                     <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:outputLabel id="name" value="#{customerBean.customerDetails.name}" />
+                    &nbsp;&nbsp;&nbsp;<p:outputLabel id="name" value="#{customerBean.user.username}" />
                     <p:message for="name" />      
 
 
                     <p:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
-                    &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{customerBean.customerDetails.address}" required="true" label="Address"/>
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{customerBean.user.address}" required="true" label="Address"/>
                     <p:message for="address" />    
 
-                    <p:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
-                    &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{customerBean.customerDetails.zipCode}" required="true" label="Zip Code">                   
+<!--                    <p:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{customerBean.user.zipCode}" required="true" label="Zip Code">                   
                     <f:validateLength minimum="6" maximum="6"/>
                     </p:inputText>
-                    <p:message for="zipcode" />  
+                    <p:message for="zipcode" />  -->
 
 
                     <p:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
-                    &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.customerDetails.mobile}" required="true" label="Mobile">                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.user.mobile}" required="true" label="Mobile">                    
                      <f:validateLength minimum="8" maximum="10"/>
                      </p:inputText>
                     <p:message for="mobile" />   
 
                     <p:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
-                    &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.customerDetails.email}" required="true" label="Email" validatorMessage="Email is not valid">
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.user.email}" required="true" label="Email" validatorMessage="Email is not valid">
                     <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                     </p:inputText>
                     <p:message for="email" />

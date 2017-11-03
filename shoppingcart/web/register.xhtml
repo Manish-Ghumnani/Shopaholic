@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+          <p:panel header="Customer Information">
+                <p:messages autoUpdate="true"/>
+
+                <h:panelGrid id="grid" columns="4" cellpadding="5">
+                    <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="name" value="#{customerBean.user.username}" required="true"/>
+                    <p:message for="name" />      
+
+                     <p:outputLabel value="Password:" style="font-weight:bold"/>                   
+                     &nbsp;&nbsp;&nbsp;<p:password id="password" required="true" label="Password" value="#{customerBean.user.password}"/>
+                    <p:message for="password" />  
+                    
+
+                    <p:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{customerBean.user.address}" required="true" label="Address"/>
+                    <p:message for="address" />    
+
+                  
+
+
+                    <p:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.user.mobile}" required="true" label="Mobile">                    
+                     <f:validateLength minimum="8" maximum="10"/>
+                     </p:inputText>
+                    <p:message for="mobile" />   
+
+                    <p:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.user.email}" required="true" label="Email" validatorMessage="Email is not valid">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </p:inputText>
+                    <p:message for="email" />
+
+                    
+                    <p:commandButton value="Register" action="#{customerBean.addCustomer()}" />
+                    <p:commandButton value="Login" action="#{customerBean.login()}" />
+                    
+                    
+                </h:panelGrid>
+
+
+            </p:panel>
+ 
+        </h:form>
+    </h:body>
+</html>
