@@ -22,36 +22,48 @@
 
     </h:head>
 
-    <h:body>
-
-
-
-
-
+    <h:body style="background-image: url(assets/images/fd.jpg)">
+            
         <h:form>         
-
+        
             <div align="center">
-
-                <h2>WELCOME</h2>
-
-                <h4>Existing Users Login -></h4>
+            
+                <p:commandButton value="Login" onclick="PF('dlg').show();"></p:commandButton>
+                <p:commandButton value="Register" onclick="PF('dlgReg').show();"></p:commandButton>
+           
                 
-                <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
-
-                    <p:graphicImage value="/assets/images/login.png" />
-
-                </h:outputLink>
+                <h2 style="color: wheat">WELCOME</h2>
                 
-                <h:outputLabel>New User?   </h:outputLabel>
-                <h:button value="Register" onclick="PF('dlgReg').show();"></h:button>
+                <p:carousel vertical="true" circular="true" autoPlayInterval="5000" numVisible="1" effect="easeInStrong" headerText="Fruits" style="margin-bottom:0">
+        <p:tab title="Apple">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage value="assets/images/fruits/fruits/apple.png" />
+                <h:outputText
+                    value="Apples contain no fat, sodium or cholesterol and are a good source of fiber. Apple trees take four to five years to produce their first fruit." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Blueberry">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage value="assets/images/fruits/fruits/blueberries.png" />
+                <h:outputText value="Blueberries Are Low in Calories, But High in Nutrients. The blueberry is a flowering shrub that produces berries that are colored blue to purple, also known as blueberries. It is strongly related to similar shrubs, such as those that produce cranberries and huckleberries." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Godfather Part III">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage value="assets/images/fruits/fruits/strawberry.png" />
+                <h:outputText value="Strawberries contain potassium, vitamin K and magnesium which are important for bone health. Studies show freeze-dried strawberry powder may help prevent human oesophageal cancer. Strawberries are filled with biotin, which helps build strong hair and nails." />
+            </h:panelGrid>
+        </p:tab>
+    </p:carousel> 
                 
-                
-
-            </div>
+                <h2 style="color: wheat"><p:commandLink action="shopping.xhtml">Click to start Shopping...!</p:commandLink></h2>
+    </div>
+            
+            
 
             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
-             <p:dialog header="Register" widgetVar="dlgReg" resizable="false">
+<!--             <p:dialog header="Register" widgetVar="dlgReg" resizable="false">
 
                 <h:panelGrid columns="2" cellpadding="5">
 
@@ -64,7 +76,7 @@
                     <p:password id="new_password" value="#{userLoginView.password}" required="true" label="password" />
 
                     <h:outputLabel for="email" value="Email" style="font-weight:bold"/>                    
-                    <p:inputText id="regex" value="#{validationView.regexText}" validatorMessage="Value does not match pattern.">
+                    <p:inputText id="regex" validatorMessage="Value does not match pattern.">
                     <f:validateRegex pattern="^[a-zA-Z]+$" />
                     </p:inputText>
 
@@ -78,38 +90,28 @@
 
                 </h:panelGrid>
 
-            </p:dialog>
+            </p:dialog>-->
 
         
 
-            <p:dialog header="Login" widgetVar="dlg" resizable="false">
+        <p:dialog header="Login" widgetVar="dlg" resizable="false">
 
                 <h:panelGrid columns="2" cellpadding="5">
 
                     <h:outputLabel for="username" value="Username:" />
-
-                    <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
-
-
-
+                    <p:inputText id="username" value="#{userLoginBean.username}" required="true" label="username" />
                     <h:outputLabel for="password" value="Password:" />
-
-                    <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
-
-
+                    <p:password id="password" value="#{userLoginBean.password}" required="true" label="password" />
 
                     <f:facet name="footer">
 
-                        <p:commandButton value="Login" 
+                        <p:commandButton value="Login" update="growl" actionListener="#{userLoginBean.login}"                  
 
                                          oncomplete="handleLoginRequest(xhr, status, args)"/>
-
                     </f:facet>  
 
                 </h:panelGrid>
-
             </p:dialog>
-
         </h:form>
 
 
