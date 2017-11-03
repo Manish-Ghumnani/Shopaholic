@@ -25,7 +25,7 @@ DataSource Name: jdbc/ejava
 JMS Queue: 	jms/warehouseQueue
 JavaMail Sessions
 
-![alt text](/misc/mailsession.png "Mail session")
+![alt text](misc/mailsession.png "Mail session")
 
 Dependent JAR
 
@@ -40,16 +40,16 @@ Database scripts are included in the repository and is required for execution.
 ### Application flow with important screen prints
 
 Adding to cart
-![alt text](/misc/shopping.png "Add to cart")
+![alt text](misc/shopping.png "Add to cart")
 
 Cart Items
-![alt text](/misc/cart_item.png "cart items")
+![alt text](misc/cart_item.png "cart items")
 
 Order Summary PDF
-![alt text](/misc/order_pdf.png "order PDF")
+![alt text](misc/order_pdf.png "order PDF")
 
 Email
-![alt text](/misc/email.png "Email")
+![alt text](misc/email.png "Email")
 
 Warehouse Queue
-![alt text](/misc/warehouse_queue.png "Queue")
+![alt text](misc/warehouse_queue.png "Queue")
