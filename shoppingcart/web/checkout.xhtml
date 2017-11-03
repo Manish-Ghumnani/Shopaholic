@@ -4,30 +4,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"	
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-        <title>Checkout</title>
+        <title>Code Pirates - Checkout</title>
     </h:head>
     <h:body>
-    <h:form id="checkoutForm">    
-    <p:tabMenu activeIndex="2">
-    <p:menuitem value="Home" action="#{productBean.home}" immediate="true">
-        <f:param name="i" value="0" />
-           </p:menuitem> 
-         <p:menuitem value="Shopping" action="#{productBean.shopping}" immediate="true">
-        <f:param name="i" value="1" />
-           </p:menuitem>    
+        <h:form id="checkoutForm">    
+            <p:tabMenu activeIndex="2">
+                <p:menuitem value="Home" action="#{productBean.home}" immediate="true">
+                    <f:param name="i" value="0" />
+                </p:menuitem> 
+                <p:menuitem value="Shopping" action="#{productBean.shopping}" immediate="true">
+                    <f:param name="i" value="1" />
+                </p:menuitem>                   
       
-    </p:tabMenu>
-    
-        <div align="center">
-            <h1>Checkout Products</h1></div>
+            </p:tabMenu>
+
+            <div align="center">
+                <h1>Checkout Products</h1></div>
         <p:commandButton value="logout" action="#{userLoginView.logout()}" immediate="true" style="text-align:right"/>    
             <p:outputPanel id="checkout">
                   
                 <p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
-				editable="false" widgetVar="documentTable">            
+                             editable="false" widgetVar="documentTable">            
 
                     <p:column headerText="Product Id" style="width:10%">
                         <h:outputText value="#{product.productId}" title="Id" />
@@ -44,63 +44,69 @@
                     </p:column>
 
                     <p:column headerText="Quantity" style="width:10%">
-                           <h:outputText value="#{product.quantity}" title="Quantity" /> 
-				</p:column>
-                            
-                             <p:column headerText="Total Price" style="width:10%">
-                                <h:outputText value="$ #{product.totalPrice}" title="Total Price" />
+                        <h:outputText value="#{product.quantity}" title="Quantity" /> 
+                    </p:column>
+
+                    <p:column headerText="Total Price" style="width:10%">
+                        <h:outputText value="$ #{product.totalPrice}" title="Total Price" />
                     </p:column>
                 </p:dataTable>
-                    
-                    <br></br>
-                    <h:outputLabel for="Order Amount" value="Order Amount: " style="font-weight:bold"/>
-                    <h:outputText value="$ #{cartBean.cartTotal}" title="Order Amount" />                     
+
+                <br></br>
+                <h:outputLabel for="Order Amount" value="Order Amount: " style="font-weight:bold"/>
+                <h:outputText value="$ #{cartBean.cartTotal}" title="Order Amount" />                     
             </p:outputPanel>
-        
-        
-        <br></br>
-        <p:panel header="Customer Information">
-        <p:messages autoUpdate="true"/>
- 
-        <h:panelGrid id="grid" columns="4" cellpadding="5">
-            <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
+
+
+            <br></br>
+            <p:panel header="Customer Information">
+                <p:messages autoUpdate="true"/>
+
+                <h:panelGrid id="grid" columns="4" cellpadding="5">
+                    <p:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
             &nbsp;&nbsp;&nbsp;<p:outputLabel id="name" value="#{customerBean.customerDetails.name}" />
-            <p:message for="name" />      
-            
-        
-             <h:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{customerBean.customerDetails.address}" required="true" label="Address"/>
-            <p:message for="address" />    
-            
-             <h:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{customerBean.customerDetails.zipCode}" required="true" label="Zip Code"/>
-            <p:message for="zipcode" />  
-           
-     
-            <h:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.customerDetails.mobile}" required="true" label="Mobile"/>
-            <p:message for="mobile" />   
-            
-            <h:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.customerDetails.email}" required="true" label="Email"/>
-            <p:message for="email" />
-            
-             <h:outputLabel for="comment" value="Comment:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="comment" value="#{customerBean.customerDetails.comment}" required="true" label="Comment"/>
-            <p:message for="comment" />
-             </h:panelGrid>
-             
-        
-         </p:panel>
-        
-        <br></br>
-        <div align="right">
-             <p:commandButton value="Back"
-					 action="#{checkoutBean.back}" immediate="true"/>  &nbsp;
-             <p:commandButton value="Buy"
-					 action="#{checkoutBean.buy}"/>                 
-             </div>            
-            
+                    <p:message for="name" />      
+
+
+                    <p:outputLabel for="address" value="Address:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="address" value="#{customerBean.customerDetails.address}" required="true" label="Address"/>
+                    <p:message for="address" />    
+
+                    <p:outputLabel for="zipcode" value="Zip Code:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="zipcode" value="#{customerBean.customerDetails.zipCode}" required="true" label="Zip Code">                   
+                    <f:validateLength minimum="6" maximum="6"/>
+                    </p:inputText>
+                    <p:message for="zipcode" />  
+
+
+                    <p:outputLabel for="mobile" value="Mobile:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="mobile" value="#{customerBean.customerDetails.mobile}" required="true" label="Mobile">                    
+                     <f:validateLength minimum="8" maximum="10"/>
+                     </p:inputText>
+                    <p:message for="mobile" />   
+
+                    <p:outputLabel for="email" value="Email:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="email" value="#{customerBean.customerDetails.email}" required="true" label="Email" validatorMessage="Email is not valid">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </p:inputText>
+                    <p:message for="email" />
+
+                    <p:outputLabel for="comment" value="Comment:" style="font-weight:bold"/>                    
+                    &nbsp;&nbsp;&nbsp;<p:inputText id="comment" value="#{customerBean.customerDetails.comment}" required="true" label="Comment"/>
+                    <p:message for="comment" />
+                </h:panelGrid>
+
+
+            </p:panel>
+
+            <br></br>
+            <div align="right">
+                <p:commandButton value="Back"
+                                 action="#{checkoutBean.back}" immediate="true"/>  &nbsp;
+                <p:commandButton value="Buy"
+                                 action="#{checkoutBean.buy}"/>                 
+            </div>            
+
         </h:form>
 
     </h:body>

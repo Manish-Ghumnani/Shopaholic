@@ -19,12 +19,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
 import org.primefaces.context.RequestContext;
+import sg.edu.nus.iss.codepirates.shoppingcart.common.ShoppingCartConstants;
 import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
 /**
  *
- * @author Divahar Sethuraman 
- * Managed Bean for Cart
+ * @author Divahar Sethuraman Bean for Cart
  */
 
 @Named("cartBean")
@@ -45,7 +45,7 @@ public class CartBean implements Serializable {
     public void setCartTotal(BigDecimal cartTotal) {
         this.cartTotal = cartTotal;
     }
-    
+
 
     public int getQuantity() {
         return quantity;
@@ -68,60 +68,57 @@ public class CartBean implements Serializable {
         String result = "";
         String msg = "";
         boolean isError = false;
-        
+
         if (null != products
                 && products.size() > 0) {
             for (Product prod : products) {
                 if (prod.getProductId().equals(product.getProductId())) {
                     int qty = prod.getQuantity();
                     int newQty = qty + quantity;
-                    
-                    if(newQty<=prod.getAvailable()){
-                    prod.setQuantity(newQty);
-                    float total = prod.getPrice() *
-                                    newQty;
-                    prod.setTotalPrice(total);
-                    isAdded = true;
-                    result = "Successful";
-                    msg = product.getProductName() + " added to cart. Please click Cart button to update or remove.";
-                    }
-                    else{
+
+                    if (newQty <= prod.getAvailable()) {
+                        prod.setQuantity(newQty);
+                        float total = prod.getPrice()
+                                * newQty;
+                        prod.setTotalPrice(total);
+                        isAdded = true;
+                        result = ShoppingCartConstants.SUCCESS;
+                        msg = product.getProductName() + ShoppingCartConstants.CART_SUCCESS;
+                    } else {
                         isError = true;
-                        result = "Unsuccessful";
-                        msg = "Selected quantity is greater than available";
+                        result = ShoppingCartConstants.UNSUCCESS;
+                        msg = ShoppingCartConstants.CART_UNSUCCESS;
                     }
                 }
             }
             if (!isAdded && !isError) {
-                if(quantity<=product.getAvailable()){ 
-                updateCart(product);
-                products.add(product);
-                result = "Successful";
-                msg = product.getProductName() + " added to cart. Please click Cart button to update or remove.";
-                }
-                else{
-                    result = "Unsuccessful";
-                    msg = "Selected quantity is greater than available";
+                if (quantity <= product.getAvailable()) {
+                    updateCart(product);
+                    products.add(product);
+                    result = ShoppingCartConstants.SUCCESS;
+                    msg = product.getProductName() + ShoppingCartConstants.CART_SUCCESS;
+                } else {
+                    result = ShoppingCartConstants.UNSUCCESS;
+                    msg = ShoppingCartConstants.CART_UNSUCCESS;
                 }
             }
         } else {
             products = new ArrayList<>();
-            if(quantity<=product.getAvailable()){
-            updateCart(product);
-            products.add(product);
-            result = "Successful";
-            msg = product.getProductName() + " added to cart. Please click Cart button to update or remove.";
+            if (quantity <= product.getAvailable()) {
+                updateCart(product);
+                products.add(product);
+                result = ShoppingCartConstants.SUCCESS;
+                msg = product.getProductName() + ShoppingCartConstants.CART_SUCCESS;
+            } else {
+                result = ShoppingCartConstants.UNSUCCESS;
+                msg = ShoppingCartConstants.CART_UNSUCCESS;
             }
-            else{
-                    result = "Unsuccessful";
-                    msg = "Selected quantity is greater than available";
-                }
         }
 
         quantity = 0;
-        
-        FacesContext context = FacesContext.getCurrentInstance();         
-        context.addMessage(null, new FacesMessage(result,msg) );
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(result, msg));
 
     }
     
@@ -132,38 +129,34 @@ public class CartBean implements Serializable {
     }
 
     public String checkout() throws IOException {
-        
+
         boolean isError = false;
         String error = "";
         cartTotal = BigDecimal.ZERO;
-        if(null!=products && 
-                products.size()>0){
-        for(Product prod:products){
-            if(null!=prod && !isError){
-            if(prod.getQuantity()>0){    
-            cartTotal = cartTotal.add(new BigDecimal
-                    (prod.getTotalPrice())).setScale(2, RoundingMode.HALF_EVEN);
-             }        
-            else{
-                isError = true;
-                error = "One or more item in the cart has selected quantity as 0";
-             }
+        if (null != products
+                && products.size() > 0) {
+            for (Product prod : products) {
+                if (null != prod && !isError) {
+                    if (prod.getQuantity() > 0) {
+                        cartTotal = cartTotal.add(new BigDecimal(prod.getTotalPrice())).setScale(2, RoundingMode.HALF_EVEN);
+                    } else {
+                        isError = true;
+                        error = ShoppingCartConstants.CHKOUT_QTY_ERR;
+                    }
+                }
             }
-          }
-        }
-        else{
+        } else {
             isError = true;
-            error = "No items in cart to checkout";
+            error = ShoppingCartConstants.CHKOUT_NOITEM_ERR;
         }
-        
-        if(isError){
-        System.out.println("In error");
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Unsuccessful",error));     
-        return ("shopping");
+
+        if (isError) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(ShoppingCartConstants.UNSUCCESS,
+                    error));
+            return ("shopping");
+        } else {
+            return ("checkout");
         }
-        else{
-          return ("checkout");
-        }    
     }
 
     public void cart() {
@@ -190,31 +183,29 @@ public class CartBean implements Serializable {
         if (null != products
                 && products.size() > 0) {
             for (Product prod : products) {
-                if (prod.getProductId().equals(product.getProductId())) { 
-                    if(quantity<=prod.getAvailable()){
-                    updateCart(prod);
-                    result = "Successful";
-                    msg = product.getProductName() + " updated.";
-                    }
-                    else{                       
-                    result = "Unsuccessful";
-                    msg = "Selected quantity is greater than available";
+                if (prod.getProductId().equals(product.getProductId())) {
+                    if (quantity <= prod.getAvailable()) {
+                        updateCart(prod);
+                        result = ShoppingCartConstants.SUCCESS;
+                        msg = product.getProductName() + " updated.";
+                    } else {
+                        result = ShoppingCartConstants.UNSUCCESS;
+                        msg = ShoppingCartConstants.CART_UNSUCCESS;
                     }
                     break;
                 }
             }
 
             quantity = 0;
-            
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(result,msg)); 
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(result, msg));
         }
     }
-    
-    public void updateCart(Product product){
-                product.setQuantity(quantity);
-                float total = product.getPrice() *
-                                    quantity;
-                product.setTotalPrice(total);                
+
+    public void updateCart(Product product) {
+        product.setQuantity(quantity);
+        float total = product.getPrice()
+                * quantity;
+        product.setTotalPrice(total);
     }
-       
 }

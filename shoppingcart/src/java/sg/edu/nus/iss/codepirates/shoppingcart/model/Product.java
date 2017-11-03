@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package sg.edu.nus.iss.codepirates.shoppingcart.model;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,36 +16,35 @@ import javax.persistence.Transient;
 
 /**
  *
- * @author Divahar Sethuraman
- * This class is the entity class for table Product
+ * @author Divahar Sethuraman This class is the entity class for table Product
  */
-
 @Entity
 @Table(name = "product")
 @NamedQuery(name = "productDetails",query = "Select p from Product p ")
-public class Product implements Serializable{
-    
+public class Product implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    @Id @Column(name = "productId")
+    @Id
+    @Column(name = "productId")
     private String productId;
-    
+
     @Column(name = "productName")
     private String productName;
-       
+
     @Transient
     private int quantity;
-    
+
     @Column(name = "productImage")
     @Lob
     private byte[] productImage;
-    
+
     @Column(name = "available")
     private int available;
-    
+
     @Column(name = "price")
     private float price;
-    
+
     @Transient
     private float totalPrice;
 
@@ -54,8 +54,8 @@ public class Product implements Serializable{
 
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
-    }    
-    
+    }
+
     public float getPrice() {
         return price;
     }
@@ -63,7 +63,7 @@ public class Product implements Serializable{
     public void setPrice(float price) {
         this.price = price;
     }
-    
+
     public byte[] getProductImage() {
         return productImage;
     }
@@ -78,8 +78,8 @@ public class Product implements Serializable{
 
     public void setAvailable(int available) {
         this.available = available;
-    }       
-    
+    }
+
     public String getProductId() {
         return productId;
     }
@@ -100,8 +100,8 @@ public class Product implements Serializable{
         return quantity;
     }
 
-    public void setQuantity(int quantity) {        
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }  
-    
+    }
+
 }

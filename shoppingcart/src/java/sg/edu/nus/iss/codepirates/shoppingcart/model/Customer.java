@@ -8,22 +8,21 @@ package sg.edu.nus.iss.codepirates.shoppingcart.model;
 import java.io.Serializable;
 import sg.edu.nus.iss.codepirates.shoppingcart.util.Utility;
 
-
 /**
  *
- * @author Manish
+ * @author Manish Model for Customer
  */
 
-public class Customer implements Serializable{
-    
+public class Customer implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     private String name;
-    
+
     private String address;
-    
+
     private String comment;
-    
+
     private String email;
 
     public String getEmail() {
@@ -34,26 +33,26 @@ public class Customer implements Serializable{
         this.email = email;
     }
 
-    public int getMobile() {
+    public Integer getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(Integer mobile) {
         this.mobile = mobile;
     }
 
-    public int getZipCode() {
+    public Integer getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
-    
-    private int mobile;
-    
-    private int zipCode;
-            
+
+    private Integer mobile;
+
+    private Integer zipCode;
+
     public String getName() {
         return Utility.getUserName();
     }

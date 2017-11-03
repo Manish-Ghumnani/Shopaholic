@@ -15,11 +15,10 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
 /**
  *
- * @author Divahar Sethuraman
- * This class contains the persistence logic for Product
- * 
+ * @author Divahar Sethuraman This class contains the persistence logic for
+ * Product
+ *
  */
-
 @Stateless
 public class ProductEJB {
 
@@ -39,11 +38,11 @@ public class ProductEJB {
          Product prod=   productFacade.find(pid);
         return prod.getProductImage();
     }
-    
-    public void update(List<Product> products){
-        for(Product prod:products){            
-            em.createQuery("update Product set available="+prod.getAvailable()+""
-                    + " where productId='"+prod.getProductId()+"'").executeUpdate();
-        }
+
+    public void update(List<Product> products) {
+        products.stream().forEach((prod) -> {
+            em.createQuery("update Product set available=" + prod.getAvailable() + ""
+                    + " where productId='" + prod.getProductId() + "'").executeUpdate();
+        });
     }
 }

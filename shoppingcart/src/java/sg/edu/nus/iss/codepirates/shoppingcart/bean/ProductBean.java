@@ -26,20 +26,19 @@ import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
 /**
  *
- * @author Divahar Sethuraman
- * Managed Bean for Product
+ * @author Divahar Sethuraman Bean for Product
  */
-
 @Named("productBean")
 @RequestScoped
 public class ProductBean implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
-    @EJB private ProductEJB prodEjb;
-    
+
+    @EJB
+    private ProductEJB prodEjb;
+
     private StreamedContent productImage;
-    private List<Product> productList;    
+    private List<Product> productList;
 
     @PostConstruct
     public void init(){
@@ -52,11 +51,11 @@ public class ProductBean implements Serializable {
         this.productImage = productImage;
     }
 
-    public void setProductList(List<Product> productList) {        
+    public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
 
-    public List<Product> getProductList() throws IOException, SQLException {        
+    public List<Product> getProductList() throws IOException, SQLException {
         return prodEjb.getProductDetails();
     }
 
@@ -76,17 +75,17 @@ public class ProductBean implements Serializable {
             return new DefaultStreamedContent(new ByteArrayInputStream(image));
 
         }
-    }   
-    
-    public String home(){        
+    }
+
+    public String home() {
         return "welcome";
     }
-    
-    public String shopping(){        
+
+    public String shopping() {
         return "shopping";
     }
-    
-    public String checkout(){        
+
+    public String checkout() {
         return "checkout";
     }
 

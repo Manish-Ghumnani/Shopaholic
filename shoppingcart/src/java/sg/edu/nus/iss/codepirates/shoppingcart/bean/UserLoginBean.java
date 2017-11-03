@@ -1,6 +1,6 @@
 package sg.edu.nus.iss.codepirates.shoppingcart.bean;
- 
-import java.io.Serializable;
+
+import javax.enterprise.context.RequestScoped;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
@@ -9,20 +9,20 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
- 
+
 import org.primefaces.context.RequestContext;
 import sg.edu.nus.iss.codepirates.shoppingcart.facade.UsersFacade;
 import sg.edu.nus.iss.codepirates.shoppingcart.util.Utility;
- 
-@Named
-@SessionScoped
-public class UserLoginView implements Serializable{
+
+@Named("userLoginBean")
+@RequestScoped
+public class UserLoginBean {
      
     @EJB
     UsersFacade userFacade;
-   
+
     private String username;
-    
+
     private String password;
 
     public String getUsername() {
@@ -40,13 +40,13 @@ public class UserLoginView implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-   
+
     
     public String authenticate() {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
-         
+
         if(userFacade.isAuthenticated(username, password)) {
             loggedIn = true;
              HttpSession session= Utility.getSession();
