@@ -76,17 +76,9 @@ public class ProductBean implements Serializable {
 
         }
     }
-
-    public String home() {
-        return "welcome";
-    }
-
-    public String shopping() {
-        return "shopping";
-    }
-
+  
     public String checkout() {
-        return "checkout";
+        return "checkout.xhtml?faces-redirect=true";
     }
 
 }

@@ -9,26 +9,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
         <title>Code Pirates - Shopping</title>
     </h:head>
-    <h:body>
+    <h:body style="background-image: url(assets/images/fd.jpg)">
 
-        <h:form id="form">    
+        <h:form id="form">               
 
-            <p:menubar>
-                <p:menuitem value="Home" action="#{productBean.home}">
-                    <f:param name="i" value="0" />
-                </p:menuitem> 
-                <p:menuitem value="Shopping" action="#{productBean.shopping}">
-                    <f:param name="i" value="1" />
-                </p:menuitem>
-                  <f:facet name="options">
                       <p:commandButton  value="Cart" icon="fa fa-shopping-cart" immediate="true" action="#{cartBean.cart()}" style="float: right" />
                      <p:commandButton  value="Logout" icon="ui-icon-extlink" immediate="true" action="#{userLoginBean.logout()}" style="float: right" />
                </f:facet> 
            
                 
             </p:menubar>
-
-            <br></br>
 
             <p:growl id="growl" showDetail="true" sticky="true" />      
 

@@ -21,46 +21,50 @@
 
     </h:head>
 
-    <h:body style="background-image: url(assets/images/fd.jpg)">
+    <h:body style="background-image: url('assets/images/fd.jpg')">
             
         <h:form>         
    
-            
+                
+                <h2 style="color: wheat">Welcome to Code Pirates</h2>
             <div align="center">
-            
                 <h:panelGroup rendered="#{not empty userLoginBean.username}">
                 <h2 style="color: wheat">WELCOME  #{userLoginBean.username}</h2>
                 <h:form>
                     <h:commandButton value="logout" action="#{userLoginBean.logout()}" style="float: right" />
                 </h:form>
             </h:panelGroup>
-            
                 
-                <p:carousel vertical="true" circular="true" autoPlayInterval="5000" numVisible="1" effect="easeInStrong" headerText="Fruits" style="margin-bottom:0">
+                <p:carousel vertical="true" circular="true" autoPlayInterval="5000" numVisible="1" effect="easeInStrong" style="margin-bottom:0">
         <p:tab title="Apple">
             <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage value="assets/images/fruits/fruits/apple.png" />
+                <p:graphicImage value="assets/images/fruits/apple.png" />
                 <h:outputText
                     value="Apples contain no fat, sodium or cholesterol and are a good source of fiber. Apple trees take four to five years to produce their first fruit." />
             </h:panelGrid>
         </p:tab>
         <p:tab title="Blueberry">
             <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage value="assets/images/fruits/fruits/blueberries.png" />
+                <p:graphicImage value="assets/images/fruits/blueberries.png" />
                 <h:outputText value="Blueberries Are Low in Calories, But High in Nutrients. The blueberry is a flowering shrub that produces berries that are colored blue to purple, also known as blueberries. It is strongly related to similar shrubs, such as those that produce cranberries and huckleberries." />
             </h:panelGrid>
         </p:tab>
         <p:tab title="Godfather Part III">
             <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage value="assets/images/fruits/fruits/strawberry.png" />
+                <p:graphicImage value="assets/images/fruits/strawberry.png" />
                 <h:outputText value="Strawberries contain potassium, vitamin K and magnesium which are important for bone health. Studies show freeze-dried strawberry powder may help prevent human oesophageal cancer. Strawberries are filled with biotin, which helps build strong hair and nails." />
             </h:panelGrid>
         </p:tab>
     </p:carousel> 
                 
-                <h2 style="color: wheat"><p:commandLink action="shopping.xhtml">Click to start Shopping...!</p:commandLink></h2>
+                <br></br>
+                <p:commandButton value="Login" onclick="PF('dlg').show();"></p:commandButton>
+                <p:commandButton value="Register" onclick="PF('dlgReg').show();"></p:commandButton>
+           
     </div>
    
+        
+                    <h:outputLabel for="username" value="Username:" />                  
         </h:form>
 
 

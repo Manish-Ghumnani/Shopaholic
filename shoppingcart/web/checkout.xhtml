@@ -9,23 +9,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
         <title>Code Pirates - Checkout</title>
     </h:head>
-    <h:body>
+    <h:body style="background-image: url('assets/images/fd.jpg')">
         <h:form id="checkoutForm">    
-            <p:menubar>
-                <p:menuitem value="Home" action="#{productBean.home}" immediate="true">
-                    <f:param name="i" value="0" />
-                </p:menuitem> 
-                <p:menuitem value="Shopping" action="#{productBean.shopping}" immediate="true">
-                    <f:param name="i" value="1" />
-                </p:menuitem>   
-                 <f:facet name="options">
                      <p:commandButton  value="Logout" icon="ui-icon-extlink" immediate="true" action="#{userLoginBean.logout()}" style="float: right" />
                 </f:facet>
       
             </p:menubar>
-
+            
             <div align="center">
-                <h1>Checkout Products</h1></div>
+                <h1 style="color: wheat">Checkout Products</h1></div>
         
             <p:outputPanel id="checkout">
                   
