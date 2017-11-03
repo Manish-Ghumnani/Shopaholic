@@ -1,3 +1,8 @@
-This NetBeans project template is for CA1. The template is to be used with the back-end warehouse application. There is an Angular application in the web directory. You cannot change the application nor can you add any HTML, CSS or JavaScript file in web.
+Steps for WareHouse Application:
+1.Enter the address: http://localhost:8080/warehouse/order
+2.Run the shopping cart application Parallel 
 
-The fruits.zip zip file contains images for the e-commerce front-end application.
+Notes:
+1.Incoming Order  --> Socket Endpoint(/order)
+2.Customer Order  --> Message Driven Bean (MDB) Triggers SocketEndpoint on calling onMessage()
+3.Session Handler --> Singleton Class that Retrieves unique session each time.
