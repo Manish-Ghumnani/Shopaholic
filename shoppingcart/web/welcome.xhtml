@@ -33,9 +33,10 @@
             <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
  
             <f:facet name="footer">
-                <h:commandButton value="Login" action="#{userLoginView.authenticate()}" >
+                <h:commandButton id="Login" value="Login" action="#{userLoginView.authenticate()}" >
                     <f:ajax onevent="click" render="growl" />
                 </h:commandButton>
+                
 <!--                                 oncomplete="handleLoginRequest(xhr, status, args)"/>-->
             </f:facet>  
         </h:panelGrid>

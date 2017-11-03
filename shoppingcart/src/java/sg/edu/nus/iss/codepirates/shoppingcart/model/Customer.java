@@ -6,6 +6,7 @@
 package sg.edu.nus.iss.codepirates.shoppingcart.model;
 
 import java.io.Serializable;
+import sg.edu.nus.iss.codepirates.shoppingcart.util.Utility;
 
 
 /**
@@ -54,7 +55,7 @@ public class Customer implements Serializable{
     private int zipCode;
             
     public String getName() {
-        return name;
+        return Utility.getUserName();
     }
 
     public void setName(String name) {

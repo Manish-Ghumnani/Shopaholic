@@ -10,9 +10,7 @@
         <title>Shopping Cart</title>
     </h:head>
     <h:body>
-    
-    
-    
+     
 	<h:form id="form">    
     
                
@@ -27,8 +25,9 @@
             
             <br></br>
         <div align="right">  
-             <p:commandButton value="Cart"
-					 action="#{cartBean.cart()}"/>               
+             <p:commandButton value="Cart" action="#{cartBean.cart()}"/>
+             
+              <p:commandButton value="logout" action="#{userLoginView.logout()}" />
     </div>
      
     <p:growl id="growl" showDetail="true" sticky="true" />      
@@ -66,7 +65,10 @@
                  <br></br>               
 
                     <h:commandButton value="Add to Cart" 
-					 action="#{cartBean.addToCart(product)}" />    
+					 action="#{cartBean.addToCart(product)}" />   
+                   
+                    
+                 
                     </h:panelGrid>
                 </p:panel> 
             </p:dataGrid>

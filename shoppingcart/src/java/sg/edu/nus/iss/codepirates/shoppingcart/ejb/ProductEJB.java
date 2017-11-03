@@ -8,6 +8,8 @@ package sg.edu.nus.iss.codepirates.shoppingcart.ejb;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import sg.edu.nus.iss.codepirates.shoppingcart.facade.ProductsFacade;
 import sg.edu.nus.iss.codepirates.shoppingcart.model.Product;
 
@@ -23,6 +25,9 @@ public class ProductEJB {
 
     @EJB
     ProductsFacade productFacade;
+    
+    @PersistenceContext
+    EntityManager em;
     
     
     public List<Product> getProductDetails() {

@@ -17,14 +17,15 @@
            </p:menuitem> 
          <p:menuitem value="Shopping" action="#{productBean.shopping}" immediate="true">
         <f:param name="i" value="1" />
-           </p:menuitem>                   
+           </p:menuitem>    
+      
     </p:tabMenu>
     
         <div align="center">
             <h1>Checkout Products</h1></div>
-	    
+        <p:commandButton value="logout" action="#{userLoginView.logout()}" immediate="true" style="text-align:right"/>    
             <p:outputPanel id="checkout">
-
+                  
                 <p:dataTable id="checkoutId" var="product" value="#{cartBean.products}"
 				editable="false" widgetVar="documentTable">            
 
@@ -63,7 +64,7 @@
  
         <h:panelGrid id="grid" columns="4" cellpadding="5">
             <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
-            &nbsp;&nbsp;&nbsp;<p:inputText id="name" value="#{customerBean.customerDetails.name}" required="true" label="Name"/>
+            &nbsp;&nbsp;&nbsp;<p:outputLabel id="name" value="#{customerBean.customerDetails.name}" />
             <p:message for="name" />      
             
         
