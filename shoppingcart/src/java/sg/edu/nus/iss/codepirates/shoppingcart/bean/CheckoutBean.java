@@ -69,7 +69,8 @@ public class CheckoutBean implements Serializable {
         emailEJB.send(custBean.getCustomerDetails().
                 getEmail(), cartBean.getProducts(), String.valueOf(cartBean.getCartTotal()));
 
-        return "thankyou";
+        return "thankyou.xhtml?faces-redirect=true";
+
     }
 
     public void order() {
@@ -102,7 +103,7 @@ public class CheckoutBean implements Serializable {
 
     public String home() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "welcome";
+        return "welcome.xhtml?faces-redirect=true";
     }
 
 }

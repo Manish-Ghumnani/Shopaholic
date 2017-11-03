@@ -9,23 +9,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
         <title>Code Pirates - Shopping</title>
     </h:head>
-    <h:body>
+    <h:body style="background-image: url(assets/images/fd.jpg)">
 
+        <h:form id="form">               
 
-
-        <h:form id="form">    
-
-
-            <p:tabMenu activeIndex="1">
-                <p:menuitem value="Home" action="#{productBean.home}">
-                    <f:param name="i" value="0" />
-                </p:menuitem> 
-                <p:menuitem value="Shopping" action="#{productBean.shopping}">
-                    <f:param name="i" value="1" />
-                </p:menuitem>                     
-            </p:tabMenu>
-
-            <br></br>
             <div align="right">  
                 <p:commandButton value="Cart"
                                  action="#{cartBean.cart()}"/>               
