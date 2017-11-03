@@ -1,9 +1,10 @@
-# Warehouse Application
-Steps for WareHouse Application:
-1.Enter the address: http://localhost:8080/warehouse/order
-2.Run the shopping cart application Parallel 
+# READ ME - Code Pirates
 
-Notes:
-1.Incoming Order  --> Socket Endpoint(/order)
-2.Customer Order  --> Message Driven Bean (MDB) Triggers SocketEndpoint on calling onMessage()
-3.Session Handler --> Singleton Class that Retrieves unique session each time.
+Enterprise Java CA - Code Pirates.
+
+There are 2 applications in this repository.
+
+Shopping cart - Front end web application to handle cart
+Warehouse - Backend to process cart items as queue
+
+Plase refer the READ ME inside each project for installation, configuration, screenshots.
