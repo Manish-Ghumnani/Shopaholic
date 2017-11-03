@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"	
-	xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Checkout</title>
-</h:head>
-<h:body>
-    
-    <h1>Thank you for shopping with us. You can download the order receipt by clicking Download Receipt.
-        Click Home to continue shopping.</h1>
-    <h:form id= "tkform">
-        <div align="center">
-             <p:commandButton value="Download Receipt"
-					 action="#{checkoutBean.order}" onclick="this.tkform.target='_blank'"/> &nbsp;                
-              <p:commandButton value="Home"
-					 action="#{checkoutBean.home}"/> 
-             </div>
 
-	</h:form>
+      xmlns:h="http://java.sun.com/jsf/html"
 
-</h:body>
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Code Pirates - Thank You</title>
+    </h:head>
+<h:body style="background-image: url('assets/images/fd.jpg')">
+
+    <h1 style="color: wheat" align="center">Thank you for shopping with Code Pirates. You can download the order receipt by clicking Download Receipt.
+           </h1>
+    <br></br>
+    <h1 style="color: wheat" align="center">Click Home to continue shopping.</h1>
+        <h:form id= "tkform">
+            <div align="center">
+                <p:commandButton value="Download Receipt"
+                                 action="#{checkoutBean.order}" onclick="this.tkform.target = '_blank'"/> &nbsp;                
+                <p:commandButton value="Home"
+                                 action="#{checkoutBean.home}"/> 
+            </div>
+
+        </h:form>
+
+    </h:body>
 </html>

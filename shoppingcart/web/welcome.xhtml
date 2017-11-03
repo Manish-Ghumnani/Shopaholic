@@ -1,56 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"	
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-        <title>TODO supply a title</title>
+
+      xmlns:f="http://java.sun.com/jsf/core"
+
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Code Pirates - Welcome</title>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</h:head>
-    <h:body>
-        
-        
+
+    </h:head>
+
+    <h:body style="background-image: url('assets/images/fd.jpg')">
+
         <h:form>         
-            <div align="center">
-        <h2>WELCOME</h2>
-        <h4>Login to start Shopping!</h4>
-    <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
-        <p:graphicImage value="/assets/images/login.png" />
-    </h:outputLink>
-            <h4>Click on the Image to log in...</h4>
-        </div>
-    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
- 
-    <p:dialog header="Login" widgetVar="dlg" resizable="false">
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="username" value="Username:" />
-            <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
- 
-            <h:outputLabel for="password" value="Password:" />
-            <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
- 
-            <f:facet name="footer">
-                <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
-                                 oncomplete="handleLoginRequest(xhr, status, args)"/>
-            </f:facet>  
-        </h:panelGrid>
-    </p:dialog>
-</h:form>
- 
-<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
-            PF('dlg').jq.effect("shake", {times:5}, 100);
-        }
-        else {
-            PF('dlg').hide();
-            $('#loginLink').fadeOut();
-            window.location.href = "shopping.xhtml";
-        }
-    }
-</script>
+
+            <div align="center">            
+
+                <h2 style="color: wheat">Welcome to Code Pirates</h2>
+
+                <p:carousel vertical="true" circular="true" autoPlayInterval="5000" numVisible="1" effect="easeInStrong" style="margin-bottom:0">
+                    <p:tab title="Apple">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage value="assets/images/fruits/apple.png" />
+                            <h:outputText
+                                value="Apples contain no fat, sodium or cholesterol and are a good source of fiber. Apple trees take four to five years to produce their first fruit." />
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Blueberry">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage value="assets/images/fruits/blueberries.png" />
+                            <h:outputText value="Blueberries Are Low in Calories, But High in Nutrients. The blueberry is a flowering shrub that produces berries that are colored blue to purple, also known as blueberries. It is strongly related to similar shrubs, such as those that produce cranberries and huckleberries." />
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Godfather Part III">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage value="assets/images/fruits/strawberry.png" />
+                            <h:outputText value="Strawberries contain potassium, vitamin K and magnesium which are important for bone health. Studies show freeze-dried strawberry powder may help prevent human oesophageal cancer. Strawberries are filled with biotin, which helps build strong hair and nails." />
+                        </h:panelGrid>
+                    </p:tab>
+                </p:carousel> 
+
+                <br></br>
+                <h:commandButton value="Enter Site" action="#{userLoginBean.login}"/>          
+
+            </div>
+
+        </h:form>
     </h:body>
+
 </html>
