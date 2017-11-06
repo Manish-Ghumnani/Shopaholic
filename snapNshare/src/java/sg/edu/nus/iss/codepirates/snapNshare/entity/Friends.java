@@ -6,9 +6,10 @@
 package sg.edu.nus.iss.codepirates.snapNshare.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -21,39 +22,30 @@ import javax.persistence.Table;
 public class Friends implements Serializable{
     
     private static final long serialVersionUID = 1L;
+  
+    @EmbeddedId
+    private FriendsId friendsId;
+     
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    public FriendsId getFriendsId() {
+        return friendsId;
+    }
+
+    public void setFriendsId(FriendsId friendsId) {
+        this.friendsId = friendsId;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
     
-    @Id
-    @Column(name = "id")
-    private int id;
-
-    @Column(name = "friend_id")    
-    private String friendId;
-
-    @Column(name = "friend_ref")
-    private String friendRef;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFriendId() {
-        return friendId;
-    }
-
-    public void setFriendId(String friendId) {
-        this.friendId = friendId;
-    }
-
-    public String getFriendRef() {
-        return friendRef;
-    }
-
-    public void setFriendRef(String friendRef) {
-        this.friendRef = friendRef;
-    }
+    
+    
    
 }

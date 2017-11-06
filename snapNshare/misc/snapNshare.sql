@@ -1,14 +1,19 @@
+DROP TABLE IF EXISTS `ejava`.`user` ;
+
 CREATE  TABLE IF NOT EXISTS `ejava`.`user`(
 `user_id` varchar(100) NOT NULL, `created_at` datetime, PRIMARY KEY ( user_id )
 )ENGINE = InnoDB;
 
+DROP TABLE IF EXISTS `ejava`.`friends` ;
 
-CREATE  TABLE IF NOT EXISTS `ejava`.`friends` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE  TABLE IF NOT EXISTS `ejava`.`friends` (  
   `friend_id` varchar(100) ,
   `friend_ref` varchar(100),
-  PRIMARY KEY (`id`))
+  `created_at` datetime,
+  PRIMARY KEY (`friend_id`, `friend_ref`))
 ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS `ejava`.`photos` ;
 
 CREATE  TABLE IF NOT EXISTS `ejava`.`photos`
 (
