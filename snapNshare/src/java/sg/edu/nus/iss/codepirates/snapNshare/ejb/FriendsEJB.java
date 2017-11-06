@@ -25,7 +25,7 @@ public class FriendsEJB {
 
     @PersistenceContext
     private EntityManager em;
-    
+
     public List<String> getFriends(String userName)
     {
         String queryString = "select f from Friends f where (f.friendsId.friendRef = :user)";
@@ -39,6 +39,24 @@ public class FriendsEJB {
         });
         return friendNames;
     }
-    
 
+    
+    public void addFriends(String friendRef,
+            List<String> friendIdList) {
+
+        Friends friend = null;
+    
+            for (String friendId : friendIdList) {
+                friend = em.find(
+                        Friends.class, new FriendsId(friendId, friendRef));
+
+                if (null == friend) {
+                    friend = new Friends();
+                    friend.setFriendsId(new FriendsId(friendId, friendRef));
+                    friend.setCreatedAt(new java.sql.Date(
+                            new java.util.Date().getTime()));
+                    em.persist(friend);
+                }
+            }
+    }   
 }
