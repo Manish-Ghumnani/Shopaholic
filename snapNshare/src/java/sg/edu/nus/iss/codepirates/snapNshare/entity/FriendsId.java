@@ -25,6 +25,15 @@ public class FriendsId implements Serializable {
     @Column(name = "friend_ref")
     private String friendRef;
 
+    public FriendsId() {
+    }
+       
+
+    public FriendsId(String friendId, String friendRef) {
+        this.friendId = friendId;
+        this.friendRef = friendRef;
+    }       
+
     public String getFriendId() {
         return friendId;
     }
@@ -40,8 +49,5 @@ public class FriendsId implements Serializable {
     public void setFriendRef(String friendRef) {
         this.friendRef = friendRef;
     }
-    
-    
-    
-    
+ 
 }

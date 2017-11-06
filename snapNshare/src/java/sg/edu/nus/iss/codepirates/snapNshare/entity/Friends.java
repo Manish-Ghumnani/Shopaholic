@@ -44,8 +44,5 @@ public class Friends implements Serializable{
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-    
-    
-    
-   
+ 
 }
