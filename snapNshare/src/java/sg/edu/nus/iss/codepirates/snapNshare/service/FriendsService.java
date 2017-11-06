@@ -5,10 +5,15 @@
  */
 package sg.edu.nus.iss.codepirates.snapNshare.service;
 
+
 import java.util.List;
 import javax.ejb.EJB;
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonString;
+import javax.json.JsonValue;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -19,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import sg.edu.nus.iss.codepirates.snapNshare.ejb.FriendsEJB;
 
 /**
@@ -34,6 +40,9 @@ public class FriendsService {
 
     @Context
     private UriInfo context;
+    
+    @EJB
+    FriendsEJB friendsEJB;
 
     /**
      * Creates a new instance of UserResource
@@ -48,7 +57,6 @@ public class FriendsService {
      * @return an instance of java.lang.String
      */
     @GET
-    @Path("/{friendRef}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@PathParam("friendRef") String friendRef) {
 
@@ -74,8 +82,26 @@ public class FriendsService {
         }
 
         return builder.build().toString();
+     }
+    
+    @GET
+    @Path("/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getFriends(@PathParam("username") String userName) {
+        List<String> friendNames = friendsEJB.getFriends(userName);
+        //System.out.println("here");
+        JsonArrayBuilder nameBuilder = Json.createArrayBuilder();
+        for(String name:friendNames){
+            nameBuilder.add(name);  
+            System.out.println(name);
+        }
+    
+        return nameBuilder.build().toString();
+        //return (Response.ok(nameBuilder, MediaType.APPLICATION_JSON).build());
+        
     }
-
+    
+    
     /**
      * PUT method for updating or creating an instance of UserResource
      *
