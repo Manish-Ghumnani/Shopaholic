@@ -17,8 +17,7 @@ import sg.edu.nus.iss.codepirates.snapNshare.entity.FriendsId;
 
 /**
  *
- * @author Divahar Sethuraman This class contains the persistence logic for
- * Product
+ * @author Divahar Sethuraman 
  *
  */
 @Stateless

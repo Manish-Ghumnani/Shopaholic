@@ -96,8 +96,7 @@ public class FriendsService {
             System.out.println(name);
         }
     
-        return nameBuilder.build().toString();
-        //return (Response.ok(nameBuilder, MediaType.APPLICATION_JSON).build());
+        return nameBuilder.build().toString();        
         
     }
     
