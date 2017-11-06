@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
+import java.util.UUID;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -57,6 +58,7 @@ public class TimelineServlet extends HttpServlet {
         newPhoto.setPostedTime(new Timestamp(System.currentTimeMillis()));
         newPhoto.setPostedBy(userName);
         newPhoto.setImage(file);
+        newPhoto.setId(UUID.randomUUID().toString());
 
         timeline.UploadImage(newPhoto);
 

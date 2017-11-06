@@ -14,11 +14,9 @@ CREATE  TABLE IF NOT EXISTS `ejava`.`friends` (
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `ejava`.`photos` ;
-
 CREATE  TABLE IF NOT EXISTS `ejava`.`photos`
 (
- `id` int(10) unsigned NOT NULL AUTO_INCREMENT, `imgName` varchar(100),
-`image` mediumblob, `comment` varchar(100), `postedBy` varchar(100), 
+ `id` varchar(100) NOT NULL,
+`image` blob, `comment` varchar(100), `postedBy` varchar(100), 
 `postedTime` datetime, PRIMARY KEY (`id`)
 )ENGINE = InnoDB;
-
