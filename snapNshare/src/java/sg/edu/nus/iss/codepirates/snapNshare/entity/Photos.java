@@ -7,6 +7,7 @@ package sg.edu.nus.iss.codepirates.snapNshare.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,9 +29,6 @@ public class Photos implements Serializable{
     @Column(name = "id")
     private int id;
 
-    @Column(name = "imgName")
-    private Date createdAt;
-    
     @Column(name = "image")
     @Lob
     private byte[] image;
@@ -42,7 +40,15 @@ public class Photos implements Serializable{
     private String postedBy;
     
     @Column(name = "postedTime")    
-    private Date postedTime;
+    private Timestamp postedTime;
+
+    public Timestamp getPostedTime() {
+        return postedTime;
+    }
+
+    public void setPostedTime(Timestamp postedTime) {
+        this.postedTime = postedTime;
+    }
 
     public int getId() {
         return id;
@@ -50,14 +56,6 @@ public class Photos implements Serializable{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     public byte[] getImage() {
@@ -83,13 +81,5 @@ public class Photos implements Serializable{
     public void setPostedBy(String postedBy) {
         this.postedBy = postedBy;
     }
-
-    public Date getPostedTime() {
-        return postedTime;
-    }
-
-    public void setPostedTime(Date postedTime) {
-        this.postedTime = postedTime;
-    } 
-    
+  
 }

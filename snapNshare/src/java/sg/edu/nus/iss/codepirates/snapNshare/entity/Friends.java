@@ -7,6 +7,7 @@ package sg.edu.nus.iss.codepirates.snapNshare.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Friends implements Serializable{
     private FriendsId friendsId;
      
     @Column(name = "created_at")
-    private Date createdAt;
+    private Timestamp createdAt;
 
     public FriendsId getFriendsId() {
         return friendsId;
@@ -37,12 +38,12 @@ public class Friends implements Serializable{
         this.friendsId = friendsId;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
-    }
- 
+    }    
+   
 }

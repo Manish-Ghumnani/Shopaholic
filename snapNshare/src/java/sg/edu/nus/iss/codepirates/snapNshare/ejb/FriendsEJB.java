@@ -5,6 +5,7 @@
  */
 package sg.edu.nus.iss.codepirates.snapNshare.ejb;
 
+import java.sql.Timestamp;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -36,7 +37,7 @@ public class FriendsEJB {
                 if (null == friend) {
                     friend = new Friends();
                     friend.setFriendsId(new FriendsId(friendId, friendRef));
-                    friend.setCreatedAt(new java.sql.Date(
+                    friend.setCreatedAt(new Timestamp(
                             new java.util.Date().getTime()));
                     em.persist(friend);
                 }
